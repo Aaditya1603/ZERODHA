@@ -10,22 +10,17 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const verifyUserSession = async () => {
-      const currentPath = window.location.pathname;
-      if (currentPath === "/login") {
-        setUser(null);
-        setLoading(false);
-        return;
-      }
-
       try {
-        const { data } = await axios.get("http://localhost:3002/Portfolio", {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          "http://localhost:3002/portfolio", // Points to your unified backend port
+          { withCredentials: true }, // Required to send the secure cookie token
+        );
 
         if (data.status) {
-          setUser(data.user);
+          setUser(data.user); // Save username/user data to global state
         } else {
           setUser(null);
+          // Kick unauthenticated users back to the frontend website login screen
           window.location.href = "http://localhost:3000/login";
         }
       } catch (error) {
