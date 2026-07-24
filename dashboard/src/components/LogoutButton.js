@@ -8,13 +8,13 @@ function LogoutButton() {
   const handleLogout = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/logout", // Update with your backend port
+        "http://localhost:3002/logout",
         {},
         { withCredentials: true },
       );
       if (data.success) {
         alert("Logged out successfully");
-        // Redirect back to main frontend website login page
+
         window.location.href = "http://localhost:3000/login";
       }
     } catch (error) {

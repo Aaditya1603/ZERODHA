@@ -11,7 +11,6 @@ function Signup() {
   });
   const { email, password, username } = inputValue;
 
-  // Track user input values
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -20,20 +19,19 @@ function Signup() {
     });
   };
 
-  // Submit data to your backend API
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/signup", // Verify this matches your backend port
+        "http://localhost:3002/signup",
         { ...inputValue },
-        { withCredentials: true }, // Securely stores token cookie in browser
+        { withCredentials: true },
       );
 
       const { success, message } = data;
       if (success) {
         alert(message);
-        navigate("/login"); // Direct user to the login screen
+        navigate("/login");
       } else {
         alert(message);
       }
@@ -99,7 +97,6 @@ function Signup() {
   );
 }
 
-// Inline styles designed to blend with your Zerodha landing layout
 const styles = {
   container: {
     maxWidth: "400px",
@@ -134,7 +131,7 @@ const styles = {
   },
   button: {
     padding: "12px",
-    backgroundColor: "#387ed1", // Zerodha theme signature blue brand colour
+    backgroundColor: "#387ed1",
     color: "white",
     border: "none",
     borderRadius: "4px",

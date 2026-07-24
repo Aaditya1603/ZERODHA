@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: new Date() },
 });
 
-// Automatically hash password before saving to the database
 userSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, 12);
 });

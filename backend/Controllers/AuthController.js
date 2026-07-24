@@ -2,7 +2,6 @@ const User = require("../Models/UserModel");
 const createSecretToken = require("../util/SecretToken");
 const bcrypt = require("bcryptjs");
 
-// SIGNUP LOGIC
 module.exports.Signup = async (req, res) => {
   try {
     const { email, password, username } = req.body;
@@ -24,7 +23,6 @@ module.exports.Signup = async (req, res) => {
   }
 };
 
-// LOGIN LOGIC
 module.exports.Login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -56,7 +54,6 @@ module.exports.Login = async (req, res) => {
   }
 };
 
-// LOGOUT LOGIC
 module.exports.Logout = async (req, res) => {
   try {
     res.clearCookie("token", {

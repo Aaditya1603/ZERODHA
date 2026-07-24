@@ -15,9 +15,9 @@ function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/login", // Verified backend port
+        "http://localhost:3002/login",
         { ...inputValue },
-        { withCredentials: true }, // Securely transfers token cookie
+        { withCredentials: true },
       );
 
       const { success, message } = data;
@@ -77,7 +77,6 @@ function Login() {
   );
 }
 
-// Inline styles mirroring your landing_page/signup/Signup.js layout
 const styles = {
   container: {
     maxWidth: "400px",
@@ -112,7 +111,7 @@ const styles = {
   },
   button: {
     padding: "12px",
-    backgroundColor: "#387ed1", // Zerodha theme signature blue brand color
+    backgroundColor: "#387ed1",
     color: "white",
     border: "none",
     borderRadius: "4px",

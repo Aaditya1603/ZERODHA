@@ -52,15 +52,15 @@ const styles = {
   imageWrapper: {
     position: "relative",
     display: "inline-block",
-    width: "220px", // Exact dimensions used by Zerodha for profile circles
+    width: "220px",
     height: "220px",
     margin: "0 auto",
   },
   profileImage: {
     width: "100%",
     height: "100%",
-    borderRadius: "50%", // Forces a perfect circular clip-path shape
-    objectFit: "cover", // Prevents your face from stretching or compressing
-    objectPosition: "center", // Keeps your eyes and nose centered in the frame
+    borderRadius: "50%",
+    objectFit: "cover",
+    objectPosition: "center",
   },
 };

@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-// Create the Authentication Context
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -11,16 +10,15 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const verifyUserSession = async () => {
       try {
-        const { data } = await axios.get(
-          "http://localhost:3002/portfolio", // Points to your unified backend port
-          { withCredentials: true }, // Required to send the secure cookie token
-        );
+        const { data } = await axios.get("http://localhost:3002/portfolio", {
+          withCredentials: true,
+        });
 
         if (data.status) {
-          setUser(data.user); // Save username/user data to global state
+          setUser(data.user);
         } else {
           setUser(null);
-          // Kick unauthenticated users back to the frontend website login screen
+
           window.location.href = "http://localhost:3000/login";
         }
       } catch (error) {
@@ -36,7 +34,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{ user, loading, setUser }}>
-      {/* Show a loading screen while validating the cookie to prevent interface flashing */}
+      {}
       {loading ? (
         <div style={styles.loaderContainer}>
           <h3>Verifying secure session...</h3>
@@ -48,7 +46,6 @@ export function AuthProvider({ children }) {
   );
 }
 
-// Hook to easily use auth state inside dashboard components (e.g., Topbar, Profile dropdown)
 export function useAuth() {
   return useContext(AuthContext);
 }
