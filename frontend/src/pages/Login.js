@@ -6,27 +6,29 @@ function Login() {
   const [inputValue, setInputValue] = useState({ email: "", password: "" });
   const { email, password } = inputValue;
 
-  // Track user input values
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
   };
 
-  // Submit data to your backend API
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3002";
+
       const { data } = await axios.post(
-        "http://localhost:3002/login", // Verified backend port
+        `${API_URL}/login`,
         { ...inputValue },
-        { withCredentials: true }, // Securely transfers token cookie
+        { withCredentials: true },
       );
 
       const { success, message } = data;
       if (success) {
         alert(message);
-        // Redirect to your trading dashboard application running on port 3001
-        window.location.href = "http://localhost:3001";
+
+        const DASHBOARD_URL =
+          process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001";
+        window.location.href = DASHBOARD_URL;
       } else {
         alert(message);
       }
