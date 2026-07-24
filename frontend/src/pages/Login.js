@@ -14,21 +14,16 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3002";
-
       const { data } = await axios.post(
-        `${API_URL}/login`,
+        "http://localhost:3002/login", // Verified backend port
         { ...inputValue },
-        { withCredentials: true },
+        { withCredentials: true }, // Securely transfers token cookie
       );
 
       const { success, message } = data;
       if (success) {
         alert(message);
-
-        const DASHBOARD_URL =
-          process.env.REACT_APP_DASHBOARD_URL || "http://localhost:3001";
-        window.location.href = DASHBOARD_URL;
+        window.location.href = "http://localhost:3001";
       } else {
         alert(message);
       }
