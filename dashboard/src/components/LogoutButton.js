@@ -7,15 +7,13 @@ function LogoutButton() {
 
   const handleLogout = async () => {
     try {
-      const { data } = await axios.post(
-        "https://zerodha-backend-5uut.onrender.com",
-        {},
-        { withCredentials: true },
-      );
+      const { data } = await axios.post("http://localhost:3002/logout", {
+        withCredentials: true,
+      });
       if (data.success) {
         alert("Logged out successfully");
 
-        window.location.href = "https://zerodha-backend-5uut.onrender.com";
+        window.location.href = "http://localhost:3000/login";
       }
     } catch (error) {
       console.log("Logout request failed", error);

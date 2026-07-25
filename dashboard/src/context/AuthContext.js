@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const verifyUserSession = async () => {
       try {
-        const { data } = await axios.get("https://onrender.com", {
+        const { data } = await axios.get("http://localhost:3002/portfolio", {
           withCredentials: true,
         });
 
@@ -19,11 +19,11 @@ export function AuthProvider({ children }) {
         } else {
           setUser(null);
 
-          window.location.href = "https://onrender.com";
+          window.location.href = "http://localhost:3000/login";
         }
       } catch (error) {
         console.error("Session verification failed:", error);
-        window.location.href = "https://onrender.com";
+        window.location.href = "http://localhost:3000/login";
       } finally {
         setLoading(false);
       }
