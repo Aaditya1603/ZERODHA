@@ -20,8 +20,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://zerodha-frontend.onrender.com",
-      "https://zerodha-dashboard.onrender.com",
+      "https://zerodha-frontend-6zw3.onrender.com",
+      "https://zerodha-dashboard-6qd8.onrender.com",
     ],
     credentials: true,
   }),
