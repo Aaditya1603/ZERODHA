@@ -8,14 +8,14 @@ function LogoutButton() {
   const handleLogout = async () => {
     try {
       const { data } = await axios.post(
-        "https://onrender.com",
+        "https://zerodha-backend-5uut.onrender.com",
         {},
         { withCredentials: true },
       );
       if (data.success) {
         alert("Logged out successfully");
 
-        window.location.href = "https://onrender.com";
+        window.location.href = "https://zerodha-backend-5uut.onrender.com";
       }
     } catch (error) {
       console.log("Logout request failed", error);

@@ -15,7 +15,7 @@ function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://onrender.com",
+        "https://zerodha-backend-5uut.onrender.com",
         { ...inputValue },
         { withCredentials: true },
       );
@@ -23,7 +23,7 @@ function Login() {
       const { success, message } = data;
       if (success) {
         alert(message);
-        window.location.href = "https://onrender.com";
+        window.location.href = "https://zerodha-backend-5uut.onrender.com";
       } else {
         alert(message);
       }

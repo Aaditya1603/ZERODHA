@@ -10,20 +10,23 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const verifyUserSession = async () => {
       try {
-        const { data } = await axios.get("https://onrender.com", {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          "https://zerodha-backend-5uut.onrender.com",
+          {
+            withCredentials: true,
+          },
+        );
 
         if (data.status) {
           setUser(data.user);
         } else {
           setUser(null);
 
-          window.location.href = "https://onrender.com";
+          window.location.href = "https://zerodha-backend-5uut.onrender.com";
         }
       } catch (error) {
         console.error("Session verification failed:", error);
-        window.location.href = "https://onrender.com";
+        window.location.href = "https://zerodha-backend-5uut.onrender.com";
       } finally {
         setLoading(false);
       }
