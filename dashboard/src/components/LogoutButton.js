@@ -8,14 +8,14 @@ function LogoutButton() {
   const handleLogout = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/logout",
+        "https://onrender.com",
         {},
         { withCredentials: true },
       );
       if (data.success) {
         alert("Logged out successfully");
 
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = "https://onrender.com";
       }
     } catch (error) {
       console.log("Logout request failed", error);

@@ -15,7 +15,7 @@ function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/login",
+        "https://onrender.com",
         { ...inputValue },
         { withCredentials: true },
       );
@@ -23,7 +23,7 @@ function Login() {
       const { success, message } = data;
       if (success) {
         alert(message);
-        window.location.href = "http://localhost:3001";
+        window.location.href = "https://onrender.com";
       } else {
         alert(message);
       }
