@@ -23,7 +23,7 @@ function Login() {
       const { success, message } = data;
       if (success) {
         alert(message);
-        window.location.href = "http://localhost:3001";
+        window.location.href = "https://zerodha-dashboard-6qd8.onrender.com";
       } else {
         alert(message);
       }
