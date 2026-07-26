@@ -19,10 +19,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "https://zerodha-frontend-6zw3.onrender.com",
-      "https://zerodha-dashboard-wj7w.onrender.com",
-    ],
+    origin: ["http://localhost:3000", "http://localhost:3001"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
@@ -30,10 +27,6 @@ app.use(
 
 app.use(cookieParser());
 app.use(bodyParser.json());
-
-app.get("/", (req, res) => {
-  res.send("Backend is running successfully!");
-});
 
 app.use("/", authRoute);
 
