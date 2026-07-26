@@ -33,6 +33,10 @@ app.use(bodyParser.json());
 
 app.use("/", authRoute);
 
+app.get("/", (req, res) => {
+  res.send("Backend is running successfully!");
+});
+
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
 //     {
