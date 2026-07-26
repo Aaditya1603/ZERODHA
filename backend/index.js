@@ -21,7 +21,7 @@ app.use(
   cors({
     origin: [
       "https://zerodha-frontend-6zw3.onrender.com",
-      "https://zerodha-dashboard-6qd8.onrender.com",
+      "https://zerodha-dashboard-wj7w.onrender.com",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
