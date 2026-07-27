@@ -15,7 +15,7 @@ function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://zerodha-backend-h3nz.onrender.com",
+        "https://zerodha-backend-h3nz.onrender.com/",
         { ...inputValue },
         { withCredentials: true },
       );
@@ -23,7 +23,7 @@ function Login() {
       const { success, message } = data;
       if (success) {
         alert(message);
-        window.location.href = "https://zerodha-dashboard-wj7w.onrender.com";
+        window.location.href = "https://zerodha-dashboard-wj7w.onrender.com/";
       } else {
         alert(message);
       }
