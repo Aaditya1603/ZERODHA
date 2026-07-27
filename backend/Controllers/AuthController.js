@@ -12,7 +12,12 @@ module.exports.Signup = async (req, res) => {
     const user = await User.create({ email, password, username });
     const token = createSecretToken(user._id);
 
-    res.cookie("token", token, { withCredentials: true, httpOnly: false });
+    res.cookie("token", token, {
+      withCredentials: true,
+      httpOnly: false,
+      secure: true,
+      sameSite: "none",
+    });
     res
       .status(201)
       .json({ message: "Signed up successfully", success: true, user });
@@ -65,6 +70,25 @@ module.exports.Logout = async (req, res) => {
       path: "/",
       withCredentials: true,
       httpOnly: false,
+    });
+    return res
+      .status(200)
+      .json({ message: "Logged out successfully", success: true });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Server error during logout", success: false });
+  }
+};
+
+module.exports.Logout = async (req, res) => {
+  try {
+    res.clearCookie("token", {
+      path: "/",
+      withCredentials: true,
+      httpOnly: false,
+      secure: true,
+      sameSite: "none",
     });
     return res
       .status(200)
