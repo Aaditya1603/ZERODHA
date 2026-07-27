@@ -20,8 +20,10 @@ const app = express();
 app.use(
   cors({
     origin: [
+      "http://localhost:3000",
+      "http://localhost:3001",
+      "https://zerodha-frontend-kch5.onrender.com",
       "https://zerodha-dashboard-wj7w.onrender.com",
-      "https://zerodha-backend-h3nz.onrender.com",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
@@ -226,10 +228,6 @@ app.post("/newOrder", userVerification, async (req, res) => {
     console.error("Mongoose Validation Error:", error.message);
     res.status(500).send("Error saving order securely.");
   }
-});
-
-app.get("/", (req, res) => {
-  res.send("Backend server is running smoothly!");
 });
 
 app.listen(PORT, () => {
