@@ -23,7 +23,7 @@ function Signup() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://zerodha-backend-5uut.onrender.com",
+        "https://zerodha-backend-5uut.onrender.com/signup",
         { ...inputValue },
         { withCredentials: true },
       );

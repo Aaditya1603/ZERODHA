@@ -19,7 +19,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: [
+      "https://zerodha-frontend-kch5.onrender.com",
+      "https://zerodha-dashboard-wj7w.onrender.com",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
@@ -210,7 +213,7 @@ app.get("/allPositions", async (req, res) => {
 app.post("/newOrder", userVerification, async (req, res) => {
   try {
     let newOrder = new OrdersModel({
-      userId: req.user._id, // 👈 Extract ID attached by AuthMiddleware (check if your field name is id or _id)
+      userId: req.user._id,
       name: req.body.name,
       qty: req.body.qty,
       price: req.body.price,

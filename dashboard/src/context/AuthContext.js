@@ -10,20 +10,25 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const verifyUserSession = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3002/portfolio", {
-          withCredentials: true,
-        });
+        const { data } = await axios.get(
+          "https://zerodha-backend-h3nz.onrender.com/portfolio",
+          {
+            withCredentials: true,
+          },
+        );
 
         if (data.status) {
           setUser(data.user);
         } else {
           setUser(null);
 
-          window.location.href = "http://localhost:3000/login";
+          window.location.href =
+            "https://zerodha-frontend-kch5.onrender.com/login";
         }
       } catch (error) {
         console.error("Session verification failed:", error);
-        window.location.href = "http://localhost:3000/login";
+        window.location.href =
+          "https://zerodha-frontend-kch5.onrender.com/login";
       } finally {
         setLoading(false);
       }
