@@ -15,7 +15,7 @@ function Login() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://zerodha-backend-h3nz.onrender.com/login",
+        "https://zerodha-backend-h3nz.onrender.com",
         { ...inputValue },
         { withCredentials: true },
       );
