@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
     const verifyUserSession = async () => {
       try {
         const { data } = await axios.get(
-          "https://zerodha-backend-h3nz.onrender.com/portfolio",
+          "https://zerodha-backend-h3nz.onrender.com",
           {
             withCredentials: true,
           },
@@ -22,13 +22,11 @@ export function AuthProvider({ children }) {
         } else {
           setUser(null);
 
-          window.location.href =
-            "https://zerodha-frontend-kch5.onrender.com/login";
+          window.location.href = "https://zerodha-frontend-kch5.onrender.com";
         }
       } catch (error) {
         console.error("Session verification failed:", error);
-        window.location.href =
-          "https://zerodha-frontend-kch5.onrender.com/login";
+        window.location.href = "https://zerodha-frontend-kch5.onrender.com";
       } finally {
         setLoading(false);
       }
