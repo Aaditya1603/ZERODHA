@@ -210,6 +210,7 @@ app.get("/allPositions", async (req, res) => {
 app.post("/newOrder", userVerification, async (req, res) => {
   try {
     let newOrder = new OrdersModel({
+      userId: req.user._id, // 👈 Extract ID attached by AuthMiddleware (check if your field name is id or _id)
       name: req.body.name,
       qty: req.body.qty,
       price: req.body.price,
@@ -219,6 +220,7 @@ app.post("/newOrder", userVerification, async (req, res) => {
     await newOrder.save();
     res.status(201).send("Order saved successfully!");
   } catch (error) {
+    console.error("Mongoose Validation Error:", error.message);
     res.status(500).send("Error saving order securely.");
   }
 });

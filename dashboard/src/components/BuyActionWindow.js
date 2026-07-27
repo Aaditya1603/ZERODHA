@@ -13,12 +13,26 @@ const BuyActionWindow = ({ uid }) => {
   const [stockPrice, setStockPrice] = useState(0.0);
 
   const handleBuyClick = () => {
-    axios.post("http://localhost:3002/newOrder", {
-      name: uid,
-      qty: stockQuantity,
-      price: stockPrice,
-      mode: "BUY",
-    });
+    axios
+      .post(
+        "http://localhost:3002/newOrder",
+        {
+          userId: uid,
+          name: uid,
+          qty: Number(stockQuantity),
+          price: Number(stockPrice),
+          mode: "BUY",
+        },
+        {
+          withCredentials: true,
+        },
+      )
+      .then((response) => {
+        console.log("Order placed successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Order failed:", error);
+      });
 
     generalContext.closeBuyWindow();
   };
