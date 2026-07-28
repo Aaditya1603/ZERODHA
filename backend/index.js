@@ -20,6 +20,7 @@ const app = express();
 app.use(
   cors({
     origin: [
+      "https://zerodha-jtob.onrender.com",
       "http://localhost:3000",
       "http://localhost:3001",
       "https://zerodha-frontend-kch5.onrender.com",
