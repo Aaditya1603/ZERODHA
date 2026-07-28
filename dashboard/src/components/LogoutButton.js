@@ -2,8 +2,6 @@ import React from "react";
 import axios from "axios";
 
 function LogoutButton() {
-  const { setUser } = useAuth();
-
   const handleLogout = async () => {
     try {
       const { data } = await axios.post(
