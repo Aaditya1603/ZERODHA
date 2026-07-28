@@ -5,12 +5,13 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const authRoute = require("./Routes/AuthRoute");
 
+const { Signup, Login } = require("./Controllers/AuthController");
+const { userVerification } = require("./Middleware/AuthMiddleware");
 const { HoldingsModel } = require("./model/HoldingsModel");
 const { PositionsModel } = require("./model/PositionsModel");
 const { OrdersModel } = require("./model/OrdersModel");
-const authRoute = require("./Routes/AuthRoute");
-const { userVerification } = require("./Middleware/AuthMiddleware");
 
 const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
@@ -20,20 +21,18 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://zerodha-jtob.onrender.com",
-      "http://localhost:3000",
-      "http://localhost:3001",
       "https://zerodha-frontend-kch5.onrender.com",
       "https://zerodha-dashboard-wj7w.onrender.com",
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"],
     credentials: true,
   }),
 );
 
-app.use(cookieParser());
 app.use(bodyParser.json());
-
+app.use(cookieParser());
+app.use(express.json());
 app.use("/", authRoute);
 
 // app.get("/addHoldings", async (req, res) => {
@@ -203,6 +202,21 @@ app.use("/", authRoute);
 //   res.send("Done Positions!");
 // });
 
+app.post("/signup", Signup);
+app.post("/login", Login);
+
+//Auth-Protected Route
+app.post("/verify", userVerification, (req, res) => {
+  res.json({
+    status: true,
+    user: {
+      id: req.user._id,
+      email: req.user.email,
+      username: req.user.username,
+    },
+  });
+});
+
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});
   res.json(allHoldings);
@@ -213,26 +227,77 @@ app.get("/allPositions", async (req, res) => {
   res.json(allPositions);
 });
 
-app.post("/newOrder", userVerification, async (req, res) => {
-  try {
-    let newOrder = new OrdersModel({
-      userId: req.user._id,
-      name: req.body.name,
-      qty: req.body.qty,
-      price: req.body.price,
-      mode: req.body.mode,
-    });
+// app.post("/newOrder", async (req, res) => {
+//     let newOrder = new OrdersModel({
+//        name: req.body.name,
+//     qty: req.body.qty,
+//     price: req.body.price,
+//     mode: req.body.mode,
+//     });
 
-    await newOrder.save();
-    res.status(201).send("Order saved successfully!");
-  } catch (error) {
-    console.error("Mongoose Validation Error:", error.message);
-    res.status(500).send("Error saving order securely.");
+//   newOrder.save();
+//   res.send("Order Saved!")
+// })
+
+// Orders API
+app.get("/getOrders", async (req, res) => {
+  const result = await OrdersModel.find({});
+  res.json(result);
+});
+
+// Create New Order (BUY / SELL)
+app.post("/newOrder", async (req, res) => {
+  try {
+    const { name, qty, price, mode } = req.body;
+
+    if (!name || isNaN(qty) || isNaN(price) || !mode) {
+      return res.status(400).send("Invalid input data");
+    }
+
+    const order = new OrdersModel({ name, qty, price, mode });
+    await order.save();
+
+    let holding = await HoldingsModel.findOne({ name });
+
+    if (mode === "BUY") {
+      if (holding) {
+        const totalQty = holding.qty + qty;
+        const totalCost = holding.avg * holding.qty + price * qty;
+        holding.avg = totalCost / totalQty;
+        holding.qty = totalQty;
+      } else {
+        holding = new HoldingsModel({
+          name,
+          qty,
+          avg: price,
+          price,
+          net: "+0.00%",
+          day: "+0.00%",
+        });
+      }
+      await holding.save();
+    } else if (mode === "SELL") {
+      if (!holding || holding.qty < qty) {
+        return res.status(400).send("Not enough stock to sell.");
+      }
+
+      holding.qty -= qty;
+      if (holding.qty === 0) {
+        await HoldingsModel.deleteOne({ name });
+      } else {
+        await holding.save();
+      }
+    }
+
+    res.send("Order placed and holdings updated");
+  } catch (err) {
+    console.error("Error in /newOrder:", err.message);
+    res.status(500).send("Internal server error");
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`App started on port ${PORT}!`);
+  console.log("App Started!");
   mongoose.connect(url);
-  console.log("DB connected!");
+  console.log("DB Connected!");
 });

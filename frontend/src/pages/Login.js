@@ -1,15 +1,27 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
-function Login() {
+const Login = () => {
+  const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({ email: "", password: "" });
   const { email, password } = inputValue;
 
+  const { email, password } = inputValue;
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({ ...inputValue, [name]: value });
   };
+
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "bottom-right",
+    });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,17 +32,27 @@ function Login() {
         { withCredentials: true },
       );
 
-      const { success, message } = data;
+      const { success, message, token } = data;
+      console.log("Force redeploy");
+
       if (success) {
-        alert(message);
-        window.location.href = "https://zerodha-dashboard-wj7w.onrender.com";
+        handleSuccess(message);
+        if (token) {
+          localStorage.setItem("token", token);
+          window.location.href = `https://zerodha-dashboard-wj7w.onrender.com?token=${token}`;
+        }
       } else {
-        alert(message);
+        handleError(message);
       }
     } catch (error) {
-      console.error("Login error:", error);
-      alert("Something went wrong. Please try again.");
+      console.log(error);
+      handleError("Login failed. Try again.");
     }
+    setInputValue({
+      ...inputValue,
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -68,14 +90,15 @@ function Login() {
         </button>
         <span style={styles.span}>
           Don't have an account yet?{" "}
-          <Link to="/signup" style={styles.link}>
+          <Link to={"/signup"} style={styles.link}>
             Signup here
           </Link>
         </span>
       </form>
+      <ToastContainer />
     </div>
   );
-}
+};
 
 const styles = {
   container: {

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
-function Signup() {
+const Signup = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -19,26 +20,42 @@ function Signup() {
     });
   };
 
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "bottom-right",
+    });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://zerodha-backend-5uut.onrender.com",
+        "https://zerodha-backend-5uut.onrender.com/signup",
         { ...inputValue },
         { withCredentials: true },
       );
 
       const { success, message } = data;
       if (success) {
-        alert(message);
-        navigate("/login");
+        handleSuccess(message);
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
       } else {
-        alert(message);
+        handleError(message);
       }
     } catch (error) {
-      console.error("Signup error:", error);
-      alert("Something went wrong. Please try again.");
+      console.log(error);
     }
+    setInputValue({
+      ...inputValue,
+      email: "",
+      password: "",
+      username: "",
+    });
   };
 
   return (
@@ -93,9 +110,10 @@ function Signup() {
           </Link>
         </span>
       </form>
+      <ToastContainer />
     </div>
   );
-}
+};
 
 const styles = {
   container: {
