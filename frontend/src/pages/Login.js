@@ -5,12 +5,17 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState({ email: "", password: "" });
+  const [inputValue, setInputValue] = useState({
+    email: "",
+    password: "",
+  });
   const { email, password } = inputValue;
-
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    setInputValue({ ...inputValue, [name]: value });
+    setInputValue({
+      ...inputValue,
+      [name]: value,
+    });
   };
 
   const handleError = (err) =>
@@ -26,8 +31,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://zerodha-backend-h3nz.onrender.com/login",
-        { ...inputValue },
+        "https://zerodhaclone-bd.onrender.com/login",
+        {
+          ...inputValue,
+        },
         { withCredentials: true },
       );
 
@@ -36,9 +43,10 @@ const Login = () => {
 
       if (success) {
         handleSuccess(message);
+        // window.location.href = `http://localhost:3000`
         if (token) {
           localStorage.setItem("token", token);
-          window.location.href = `https://zerodha-dashboard-wj7w.onrender.com?token=${token}`;
+          window.location.href = `https://zerodha-dashboard-tdz8.onrender.com?token=${token}`;
         }
       } else {
         handleError(message);
@@ -55,102 +63,39 @@ const Login = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <h2>Login to Zerodha</h2>
-      <p style={styles.subtitle}>Access your trading dashboard and portfolio</p>
-
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <div style={styles.inputGroup}>
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Enter your email"
-            onChange={handleOnChange}
-            required
-            style={styles.input}
-          />
-        </div>
-        <div style={styles.inputGroup}>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Enter your password"
-            onChange={handleOnChange}
-            required
-            style={styles.input}
-          />
-        </div>
-        <button type="submit" style={styles.button}>
-          Login
-        </button>
-        <span style={styles.span}>
-          Don't have an account yet?{" "}
-          <Link to={"/signup"} style={styles.link}>
-            Signup here
-          </Link>
-        </span>
-      </form>
-      <ToastContainer />
+    <div className="container mt-5" style={{ marginLeft: "30rem" }}>
+      <div className="form_container">
+        <h2>Login Account</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Enter your email"
+              onChange={handleOnChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Enter your password"
+              onChange={handleOnChange}
+            />
+          </div>
+          <button type="submit">Submit</button>
+          <span>
+            Already have an account? <Link to={"/signup"}>Signup</Link>
+          </span>
+        </form>
+        <ToastContainer />
+      </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    maxWidth: "400px",
-    margin: "80px auto",
-    padding: "30px 20px",
-    border: "1px solid #e0e0e0",
-    borderRadius: "4px",
-    fontFamily: "Inter, sans-serif",
-    textAlign: "center",
-  },
-  subtitle: {
-    color: "#666",
-    fontSize: "14px",
-    marginBottom: "20px",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "18px",
-  },
-  inputGroup: {
-    display: "flex",
-    flexDirection: "column",
-    textAlign: "left",
-    gap: "6px",
-  },
-  input: {
-    padding: "12px",
-    fontSize: "14px",
-    border: "1px solid #ccc",
-    borderRadius: "4px",
-  },
-  button: {
-    padding: "12px",
-    backgroundColor: "#387ed1",
-    color: "white",
-    border: "none",
-    borderRadius: "4px",
-    fontSize: "16px",
-    cursor: "pointer",
-    fontWeight: "500",
-    marginTop: "5px",
-  },
-  span: {
-    fontSize: "14px",
-    color: "#666",
-    marginTop: "10px",
-  },
-  link: {
-    color: "#387ed1",
-    textDecoration: "none",
-  },
 };
 
 export default Login;
