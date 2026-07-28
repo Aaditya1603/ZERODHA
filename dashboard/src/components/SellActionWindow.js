@@ -1,35 +1,26 @@
 import React, { useContext, useState } from "react";
+import axios from "axios";
+import GeneralContext from "./GeneralContext";
+import "./BuyActionWindow.css";
 import { Link } from "react-router-dom";
 
-import axios from "axios";
-
-import GeneralContext from "./GeneralContext";
-
-import "./BuyActionWindow.css";
-
-const BuyActionWindow = ({ uid }) => {
-  const generalContext = useContext(GeneralContext);
+const SellActionWindow = ({ uid }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(0.0);
-  const { closeBuyWindow } = useContext(GeneralContext);
+  const { closeSellWindow } = useContext(GeneralContext);
 
-  const handleBuyClick = async () => {
-    try {
-      await axios.post("https://zerodha-backend-h3nz.onrender.com/newOrder", {
-        name: uid,
-        qty: parseFloat(stockQuantity),
-        price: parseFloat(stockPrice),
-        mode: "BUY",
-      });
-      closeBuyWindow();
-    } catch (err) {
-      console.error("Buy failed", err);
-      alert("Failed to place order. Please try again.");
-    }
+  const handleSellClick = () => {
+    axios.post("https://zerodha-backend-h3nz.onrender.com/newOrder", {
+      name: uid,
+      qty: stockQuantity,
+      price: stockPrice,
+      mode: "SELL",
+    });
+    closeSellWindow();
   };
 
   const handleCancelClick = () => {
-    closeBuyWindow();
+    closeSellWindow();
   };
 
   return (
@@ -37,23 +28,26 @@ const BuyActionWindow = ({ uid }) => {
       <div className="regular-order">
         <div className="inputs">
           <fieldset>
-            <legend>Qty.</legend>
+            <legend>Qty</legend>
             <input
               type="number"
               name="qty"
               id="qty"
-              onChange={(e) => setStockQuantity(e.target.value)}
+              onChange={(e) => {
+                setStockQuantity(e.target.value);
+              }}
               value={stockQuantity}
             />
           </fieldset>
           <fieldset>
-            <legend>Price</legend>
+            <legend>price</legend>
             <input
               type="number"
               name="price"
               id="price"
-              step="0.05"
-              onChange={(e) => setStockPrice(e.target.value)}
+              onChange={(e) => {
+                setStockPrice(e.target.value);
+              }}
               value={stockPrice}
             />
           </fieldset>
@@ -63,8 +57,8 @@ const BuyActionWindow = ({ uid }) => {
       <div className="buttons">
         <span>Margin required ₹140.65</span>
         <div>
-          <Link className="btn btn-blue" onClick={handleBuyClick}>
-            Buy
+          <Link className="btn btn-danger" onClick={handleSellClick}>
+            sell
           </Link>
           <Link to="" className="btn btn-grey" onClick={handleCancelClick}>
             Cancel
@@ -75,4 +69,4 @@ const BuyActionWindow = ({ uid }) => {
   );
 };
 
-export default BuyActionWindow;
+export default SellActionWindow;

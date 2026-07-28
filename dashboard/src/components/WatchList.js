@@ -1,5 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import GeneralContext from "./GeneralContext";
 import { Tooltip, Grow } from "@mui/material";
+
 import {
   BarChartOutlined,
   Dataset,
@@ -9,7 +12,6 @@ import {
 } from "@mui/icons-material";
 
 import { watchlist } from "../data/data";
-import GeneralContext from "./GeneralContext";
 import DoughnutChart from "./DoughnoutChart";
 
 const labels = watchlist.map((subArray) => subArray["name"]);
@@ -105,6 +107,10 @@ const WatchListActions = ({ uid }) => {
     generalContext.openBuyWindow(uid);
   };
 
+  const handleSellClick = () => {
+    generalContext.openSellWindow(uid);
+  };
+
   return (
     <span className="actions">
       <span>
@@ -123,6 +129,7 @@ const WatchListActions = ({ uid }) => {
           placement="top"
           arrow
           TransitionComponent={Grow}
+          onClick={handleBuyClick}
         >
           <button className="sell">Sell</button>
         </Tooltip>

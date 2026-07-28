@@ -17,6 +17,10 @@ const Menu = () => {
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
 
+  const goToFrontend = () => {
+    window.location.href = "https://zerodha-frontend-kch5.onrender.com/";
+  };
+
   return (
     <div className="menu-container">
       <img src="logo.png" style={{ width: "50px" }} />
@@ -69,7 +73,7 @@ const Menu = () => {
           <li>
             <Link
               style={{ textDecoration: "none" }}
-              to="funds"
+              to="/funds"
               onClick={() => handleMenuClick(4)}
             >
               <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>

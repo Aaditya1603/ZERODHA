@@ -1,35 +1,94 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
+// import BuyActionWindow from "./BuyActionWindow";
+
+// const GeneralContext = React.createContext({
+//   openBuyWindow: (uid) => {},
+//   closeBuyWindow: () => {},
+// });
+
+// export const GeneralContextProvider = (props) => {
+//   const [isBuyWindowOpen, setIsBuyWindowOpen] = useState(false);
+//   const [selectedStockUID, setSelectedStockUID] = useState("");
+
+//   const handleOpenBuyWindow = (uid) => {
+//     setIsBuyWindowOpen(true);
+//     setSelectedStockUID(uid);
+//   };
+
+//   const handleCloseBuyWindow = () => {
+//     setIsBuyWindowOpen(false);
+//     setSelectedStockUID("");
+//   };
+
+//   return (
+//     <GeneralContext.Provider
+//       value={{
+//         openBuyWindow: handleOpenBuyWindow,
+//         closeBuyWindow: handleCloseBuyWindow,
+//       }}
+//     >
+//       {props.children}
+//       {isBuyWindowOpen && <BuyActionWindow uid={selectedStockUID} />}
+//     </GeneralContext.Provider>
+//   );
+// };
+
+// GeneralContext.jsx
+import React, { useState, createContext } from "react";
 import BuyActionWindow from "./BuyActionWindow";
+import SellActionWindow from "./SellActionWindow";
 
-const GeneralContext = React.createContext({
-  openBuyWindow: (uid) => {},
+const GeneralContext = createContext({
+  openBuyWindow: (uid, onOrderComplete) => {},
   closeBuyWindow: () => {},
+  openSellWindow: (uid, onOrderComplete) => {},
+  closeSellWindow: () => {},
 });
 
 export const GeneralContextProvider = (props) => {
   const [isBuyWindowOpen, setIsBuyWindowOpen] = useState(false);
+  const [isSellWindowOpen, setIsSellWindowOpen] = useState(false);
   const [selectedStockUID, setSelectedStockUID] = useState("");
+  const [onBuyComplete, setOnBuyComplete] = useState(null);
+  const [onSellComplete, setOnSellComplete] = useState(null);
 
-  const handleOpenBuyWindow = (uid) => {
-    setIsBuyWindowOpen(true);
+  const openBuyWindow = (uid, callback) => {
     setSelectedStockUID(uid);
+    setIsBuyWindowOpen(true);
+    setOnBuyComplete(() => callback);
   };
 
-  const handleCloseBuyWindow = () => {
+  const openSellWindow = (uid, callback) => {
+    setSelectedStockUID(uid);
+    setIsSellWindowOpen(true);
+    setOnSellComplete(() => callback);
+  };
+
+  const closeBuyWindow = () => {
     setIsBuyWindowOpen(false);
     setSelectedStockUID("");
+    if (onBuyComplete) onBuyComplete();
+  };
+
+  const closeSellWindow = () => {
+    setIsSellWindowOpen(false);
+    setSelectedStockUID("");
+    if (onSellComplete) onSellComplete();
   };
 
   return (
     <GeneralContext.Provider
       value={{
-        openBuyWindow: handleOpenBuyWindow,
-        closeBuyWindow: handleCloseBuyWindow,
+        openBuyWindow,
+        closeBuyWindow,
+        openSellWindow,
+        closeSellWindow,
       }}
     >
       {props.children}
       {isBuyWindowOpen && <BuyActionWindow uid={selectedStockUID} />}
+      {isSellWindowOpen && <SellActionWindow uid={selectedStockUID} />}
     </GeneralContext.Provider>
   );
 };

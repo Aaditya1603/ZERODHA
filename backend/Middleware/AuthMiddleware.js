@@ -1,40 +1,31 @@
+const User = require("../models/UserModel");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const User = require("../Models/UserModel");
 
-module.exports.userVerification = (req, res, next) => {
-  const token = req.cookies.token;
+module.exports.userVerification = async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
 
-  if (!token) {
-    return res
-      .status(401)
-      .json({ status: false, message: "Access denied. No token provided." });
-  }
-
-  jwt.verify(token, process.env.TOKEN_KEY, async (err, decodedData) => {
-    if (err) {
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res
-        .status(403)
-        .json({ status: false, message: "Invalid or expired token." });
+        .status(401)
+        .json({ status: false, message: "Unauthorized: No token" });
     }
 
-    try {
-      const user = await User.findById(decodedData.id).select("-password");
+    const token = authHeader.split(" ")[1];
 
-      if (!user) {
-        return res
-          .status(404)
-          .json({ status: false, message: "User not found." });
-      }
+    const decoded = jwt.verify(token, process.env.TOKEN_KEY);
+    const user = await User.findById(decoded.id);
 
-      req.user = user;
-
-      next();
-    } catch (error) {
-      return res.status(500).json({
-        status: false,
-        message: "Internal server error during verification.",
-      });
+    if (!user) {
+      return res
+        .status(401)
+        .json({ status: false, message: "Unauthorized: User not found" });
     }
-  });
+
+    req.user = user;
+    next();
+  } catch (err) {
+    return res.status(403).json({ status: false, message: "Invalid token" });
+  }
 };
