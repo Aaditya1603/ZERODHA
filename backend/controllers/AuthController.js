@@ -42,8 +42,6 @@ module.exports.Signup = async (req, res, next) => {
   }
 };
 
-const bcrypt = require("bcrypt"); // Ensure bcrypt is explicitly required at the top
-
 module.exports.Login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
