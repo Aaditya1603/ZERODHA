@@ -5,13 +5,13 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const authRoute = require("./Routes/AuthRoute");
+const authRoute = require("./routes/AuthRoute");
 
-const { Signup, Login } = require("./Controllers/AuthController");
-const { userVerification } = require("./Middleware/AuthMiddleware");
-const { HoldingsModel } = require("./model/HoldingsModel");
-const { PositionsModel } = require("./model/PositionsModel");
-const { OrdersModel } = require("./model/OrdersModel");
+const { Signup, Login } = require("./controllers/AuthController");
+const { userVerification } = require("./middleware/AuthMiddleware");
+const { HoldingsModel } = require("./models/HoldingsModel");
+const { PositionsModel } = require("./models/PositionsModel");
+const { OrdersModel } = require("./models/OrdersModel");
 
 const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
