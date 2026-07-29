@@ -6,7 +6,7 @@ import PricingPage from "./landing_page/pricing/PricingPage";
 import ProductsPage from "./landing_page/products/ProductPage";
 import SupportPage from "./landing_page/support/SupportPage";
 import Footer from "./landing_page/Footer";
-import Navbar from "./landing_page/Navbar";
+import Navbar from "./Navbar";
 import NotFound from "./landing_page/NotFound";
 // import ProtectedRoute from './pages/ProtectedRoute';
 // import DashboardHome from './pages/dashboard/DashboardHome';
