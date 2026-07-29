@@ -1,13 +1,24 @@
 const User = require("../models/UserModel");
-const createSecretToken = require("../utils/SecretToken");
 const bcrypt = require("bcryptjs");
+const { createSecretToken } = require("../utils/SecretToken");
 
 module.exports.Signup = async (req, res, next) => {
   try {
+    // 1. Log exactly what data is coming into the server
+    console.log("BACKEND SIGNUP RECEIVED BODY:", req.body);
+
     const { email, password, username, createdAt } = req.body;
+
+    if (!email || !password || !username) {
+      console.log("CRITICAL ERROR: Missing fields in backend validation!");
+      return res
+        .status(400)
+        .json({ message: "All fields are required fields", success: false });
+    }
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
+      console.log("CRITICAL ERROR: Email already exists in DB:", email);
       return res
         .status(400)
         .json({ message: "User already exists", success: false });
@@ -16,24 +27,20 @@ module.exports.Signup = async (req, res, next) => {
     const user = await User.create({ email, password, username, createdAt });
     const token = createSecretToken(user._id);
 
-    // Added Production Cookie Settings for Render
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "none", // Must be "none" if frontend and backend have different domains on Render
-      secure: true, // Must be true for sameSite: "none" to work over HTTPS on Render
+      sameSite: "none",
+      secure: true,
       path: "/",
     });
 
-    // Send success response and return immediately
-    return res.status(201).json({
-      message: "Signed up successfully",
-      success: true,
-      user,
-    });
+    console.log("SIGNUP SUCCESS: User created successfully!");
+    return res
+      .status(201)
+      .json({ message: "Signed up successfully", success: true, user });
   } catch (error) {
-    console.error("Signup error caught:", error);
-
-    // CRITICAL: This stops the frontend from hanging when an error occurs
+    // 2. This will print the exact reason for your 400/500 errors in Render logs
+    console.error("DETAILED SIGNUP SYSTEM CRASH ERROR:", error);
     return res.status(500).json({
       message: "Internal server error during registration",
       success: false,
@@ -44,7 +51,9 @@ module.exports.Signup = async (req, res, next) => {
 
 module.exports.Login = async (req, res, next) => {
   try {
+    console.log("BACKEND LOGIN RECEIVED BODY:", req.body);
     const { email, password } = req.body;
+
     if (!email || !password) {
       return res
         .status(400)
@@ -53,6 +62,7 @@ module.exports.Login = async (req, res, next) => {
 
     const user = await User.findOne({ email });
     if (!user) {
+      console.log("LOGIN FAIL: User not found in database:", email);
       return res
         .status(401)
         .json({ message: "Incorrect password or email", success: false });
@@ -60,6 +70,7 @@ module.exports.Login = async (req, res, next) => {
 
     const auth = await bcrypt.compare(password, user.password);
     if (!auth) {
+      console.log("LOGIN FAIL: Password verification failed for:", email);
       return res
         .status(401)
         .json({ message: "Incorrect password or email", success: false });
@@ -67,39 +78,23 @@ module.exports.Login = async (req, res, next) => {
 
     const token = createSecretToken(user._id);
 
-    // FIXED: Production-ready cookie configuration for cross-domain Render deployments
     res.cookie("token", token, {
       httpOnly: true,
-      sameSite: "none", // Required because frontend and backend use different domains
-      secure: true, // Required when sameSite is set to "none" over HTTPS
+      sameSite: "none",
+      secure: true,
       path: "/",
     });
 
-    return res.status(200).json({
-      message: "User logged in successfully",
-      success: true,
-      token,
-    });
+    console.log("LOGIN SUCCESS: User authenticated successfully!");
+    return res
+      .status(200)
+      .json({ message: "User logged in successfully", success: true, token });
   } catch (error) {
-    console.error("Login error caught:", error);
-
-    // CRITICAL: Prevents your frontend from hanging as pending during an internal crash
+    console.error("DETAILED LOGIN SYSTEM CRASH ERROR:", error);
     return res.status(500).json({
       message: "Internal server error during login",
       success: false,
       error: error.message,
     });
   }
-};
-
-module.exports.Logout = async (req, res) => {
-  // FIXED: Clearing the cookie must match the exact same domain settings to delete successfully
-  res.clearCookie("token", {
-    path: "/",
-    sameSite: "none",
-    secure: true,
-  });
-  return res
-    .status(200)
-    .json({ success: true, message: "Logged out successfully" });
 };
