@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import LogoutButton from "./LogoutButton";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
@@ -81,14 +80,20 @@ const Menu = () => {
               </p>
             </Link>
           </li>
+          <li>
+            <p
+              onClick={goToFrontend}
+              className={menuClass}
+              style={{ cursor: "pointer" }}
+            >
+              Exit Dashboard
+            </p>
+          </li>
         </ul>
         <hr />
         <div className="profile" onClick={handleProfileClick}>
           <div className="avatar">U</div>
           <p className="username">USER</p>
-        </div>
-        <div style={{ paddingLeft: "15px" }}>
-          <LogoutButton />
         </div>
       </div>
     </div>

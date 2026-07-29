@@ -23,19 +23,22 @@ const Home = () => {
       console.log("Stored token:", token);
 
       if (!token) {
-        window.location.href = "https://zerodha-frontend-4d9w.onrender.com/";
+        window.location.href = "https://zerodha-frontend-kch5.onrender.com//";
 
         return;
       }
 
       try {
-        const res = await fetch("https://zerodhaclone-bd.onrender.com/verify", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const res = await fetch(
+          "https://zerodha-backend-h3nz.onrender.com/verify",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            credentials: "include",
           },
-          credentials: "include",
-        });
+        );
 
         const data = await res.json();
         console.log("Verify API response:", res.status, data);
@@ -43,11 +46,11 @@ const Home = () => {
         if (res.status === 200) {
           setIsVerified(true);
         } else {
-          window.location.href = "https://zerodha-frontend-4d9w.onrender.com/";
+          window.location.href = "https://zerodha-frontend-kch5.onrender.com/";
         }
       } catch (err) {
         console.error("Verification failed:", err);
-        window.location.href = "https://zerodha-frontend-4d9w.onrender.com/";
+        window.location.href = "https://zerodha-frontend-kch5.onrender.com/";
       }
     };
 
