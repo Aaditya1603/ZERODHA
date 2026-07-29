@@ -202,6 +202,10 @@ app.use("/", authRoute);
 //   res.send("Done Positions!");
 // });
 
+app.get("/", (req, res) => {
+  res.status(200).send("Zerodha Backend Server is Running!");
+});
+
 app.post("/signup", Signup);
 app.post("/login", Login);
 
@@ -296,8 +300,12 @@ app.post("/newOrder", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log("App Started!");
-  mongoose.connect(url);
-  console.log("DB Connected!");
+app.listen(PORT, async () => {
+  console.log(`App Started on port ${PORT}!`);
+  try {
+    await mongoose.connect(url);
+    console.log("DB Connected Successfully!");
+  } catch (error) {
+    console.error("MongoDB Connection Failed:", error.message);
+  }
 });
