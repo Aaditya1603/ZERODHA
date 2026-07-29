@@ -23,7 +23,7 @@ const Home = () => {
       console.log("Stored token:", token);
 
       if (!token) {
-        window.location.href = "https://zerodha-frontend-kch5.onrender.com//";
+        window.location.href = "https://zerodha-frontend-kch5.onrender.com/";
 
         return;
       }
