@@ -77,7 +77,7 @@ const Signup = () => {
             />
           </div>
           <div>
-            <label htmlFor="email">Username</label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               name="username"
@@ -98,7 +98,7 @@ const Signup = () => {
           </div>
           <button type="submit">Submit</button>
           <span style={{ color: "var(--text-secondary)" }}>
-            Already have an account?{" "}
+            Already have an account?
             <Link to={"/login"} style={{ color: "var(--accent-color)" }}>
               Login
             </Link>

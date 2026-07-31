@@ -98,7 +98,7 @@ const Login = () => {
               display: "block",
             }}
           >
-            Don't have an account?{" "}
+            Don't have an account?
             <Link to={"/signup"} style={{ color: "var(--accent-color)" }}>
               Signup
             </Link>
