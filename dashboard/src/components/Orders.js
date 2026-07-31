@@ -17,7 +17,7 @@ const Orders = () => {
     };
 
     fetchOrders();
-    // Poll for new orders every 1 second
+
     const interval = setInterval(fetchOrders, 1000);
     return () => clearInterval(interval);
   }, []);

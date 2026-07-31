@@ -1,12 +1,34 @@
-[data-theme="dark"],
-[data-theme="dark"] body,
-[data-theme="dark"] #root,
-[data-theme="dark"] div,
-[data-theme="dark"] nav,
-[data-theme="dark"] header {
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] strong,
+[data-theme="dark"] b {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] li,
+[data-theme="dark"] td,
+[data-theme="dark"] th,
+[data-theme="dark"] div:not([style*="color"]) {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] span,
+[data-theme="dark"] .name,
+[data-theme="dark"] .symbol,
+[data-theme="dark"] [class*="value"],
+[data-theme="dark"] [class*="number"] {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] input {
   background-color: var(--bg-primary) !important;
   color: var(--text-primary) !important;
-  border-color: var(--border-color) !important;
+  border: 1px solid var(--border-color) !important;
 }
 
 [data-theme="dark"] input {
@@ -15,7 +37,7 @@
   border: 1px solid var(--border-color) !important;
 }
 
-[data-theme="dark"] .text-muted,
+[data-theme="dark"],
 [data-theme="dark"] p,
 [data-theme="dark"] span:not([style*="color"]) {
   color: var(--text-secondary) !important;
@@ -31,11 +53,11 @@
 }
 
 [data-theme="dark"] {
-  --bg-primary: #121212;
-  --bg-surface: #1c1c1e;
-  --text-primary: #f5f5f5;
-  --text-secondary: #aaaaaa;
-  --border-color: #2c2c2e;
+  --bg-primary: #0d0d0e;
+  --bg-surface: #161618;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --border-color: #262629;
   --accent-color: #387ed1;
 }
 
@@ -915,26 +937,6 @@ hr {
 
 .action:hover {
   background-color: rgb(212, 212, 212);
-}
-
-[data-theme="dark"],
-[data-theme="dark"] body,
-[data-theme="dark"] #root,
-[data-theme="dark"] div,
-[data-theme="dark"] nav,
-[data-theme="dark"] header {
-  background-color: var(--bg-primary) !important;
-  color: var(--text-primary) !important;
-  border-color: var(--border-color) !important;
-}
-
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4,
-[data-theme="dark"] h5,
-[data-theme="dark"] h6 {
-  color: var(--text-primary) !important;
 }
 
 [data-theme="dark"] .equity h1,
