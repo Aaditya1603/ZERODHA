@@ -924,3 +924,51 @@ hr {
 .action:hover {
   background-color: rgb(212, 212, 212);
 }
+
+[data-theme="dark"],
+[data-theme="dark"] body,
+[data-theme="dark"] #root,
+[data-theme="dark"] div,
+[data-theme="dark"] nav,
+[data-theme="dark"] header {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .equity h1,
+[data-theme="dark"] .holdings h1,
+[data-theme="dark"] .value,
+[data-theme="dark"] [class*="value"],
+[data-theme="dark"] [class*="number"] {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .watchlist-container p,
+[data-theme="dark"] .watchlist-container span,
+[data-theme="dark"] li span {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] p,
+[data-theme="dark"] .label,
+[data-theme="dark"] [class*="label"],
+[data-theme="dark"] span[class*="muted"] {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] input {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
