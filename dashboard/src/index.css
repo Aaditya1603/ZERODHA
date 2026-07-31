@@ -12,8 +12,7 @@
 [data-theme="dark"] p,
 [data-theme="dark"] li,
 [data-theme="dark"] td,
-[data-theme="dark"] th,
-[data-theme="dark"] div:not([style*="color"]) {
+[data-theme="dark"] th {
   color: var(--text-secondary) !important;
 }
 
@@ -965,6 +964,20 @@ hr {
   background-color: var(--bg-surface) !important;
   color: var(--text-primary) !important;
   border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .watchlist-container li,
+[data-theme="dark"] [class*="watch"] li,
+[data-theme="dark"] [class*="item-container"] {
+  background-color: transparent !important;
+  transition: background-color 0.15s ease;
+}
+
+[data-theme="dark"] .watchlist-container li:hover,
+[data-theme="dark"] [class*="watch"] li:hover,
+[data-theme="dark"] [class*="item-container"]:hover {
+  background-color: var(--bg-surface) !important;
+  cursor: pointer;
 }
 
 .btn-exit-dashboard {
