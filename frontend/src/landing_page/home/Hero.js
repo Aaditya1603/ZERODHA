@@ -7,7 +7,8 @@ function Hero() {
         <img
           src="media/images/homeHero.png"
           alt="Hero Image"
-          className="mb-5"
+          className="img-fluid theme-invert-img mb-5"
+          style={{ width: "100%", maxWidth: "1000px" }}
         />
         <h1 className="mt-5">Invest in everything</h1>
         <p>

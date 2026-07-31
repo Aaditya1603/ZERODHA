@@ -3,15 +3,25 @@ import React from "react";
 function Team() {
   return (
     <div className="container">
-      <div className="row p-3 mt-5 border-top">
-        <h1 className="text-center">People</h1>
+      <div
+        className="p-3 mt-5 border-top"
+        style={{
+          lineHeight: "1.8",
+          fontSize: "1.2em",
+          color: "var(--text-secondary)",
+          borderColor: "var(--border-color) !important",
+        }}
+      >
+        <h1 className="text-center" style={{ color: "var(--text-primary)" }}>
+          People
+        </h1>
       </div>
 
       <div
-        className="row p-3 text-muted"
+        className="row p-3 align-items-center justify-content-center"
         style={{ lineHeight: "1.8", fontSize: "1.2em" }}
       >
-        <div className="col-12 col-md-6 p-3 text-center">
+        <div className="col-6 col-md-5 p-3 text-center">
           <div style={styles.imageWrapper}>
             <img
               src="media/images/profile-image copy.png"
@@ -20,10 +30,16 @@ function Team() {
             />
           </div>
 
-          <h4 className="mt-5">Aaditya Bhardwaj</h4>
-          <h6>Founder, CEO</h6>
+          <h4 className="mt-3" style={{ color: "var(--text-primary)" }}>
+            Aaditya Bhardwaj
+          </h4>
+          <h6 style={{ color: "var(--text-secondary)" }}>Founder, CEO</h6>
         </div>
-        <div className="col-6 p-3">
+
+        <div
+          className="col-6 col-md-6 p-3"
+          style={{ color: "var(--text-secondary)" }}
+        >
           <p>
             Aaditya founded Zerodha in 2010 to overcome the hurdles he faced
             during his decade long stint as a trader. Today, Zerodha has changed
@@ -34,9 +50,16 @@ function Team() {
             (SMAC) and the Market Data Advisory Committee (MDAC).{" "}
           </p>{" "}
           <p>Playing basketball is his zen.</p>{" "}
-          <p>
+          <p className="mt-4">
             Connect on{" "}
-            <a href="" style={{ textDecoration: "none" }}>
+            <a
+              href=""
+              style={{
+                textDecoration: "none",
+                color: "var(--accent-color)",
+                fontWeight: "500",
+              }}
+            >
               Homepage / TradingQnA / Twitter
             </a>
           </p>

@@ -1,10 +1,83 @@
+/* ==========================================================================
+   1. THEME DESIGN TOKENS
+   ========================================================================= */
+:root {
+  --bg-primary: #ffffff;
+  --bg-surface: #fafafa;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #eeeeee;
+  --accent-color: #387ed1;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #121212; /* Restores proper contrast background */
+  --bg-surface: #0b0b0b; /* Distinct deep charcoal tone for footer */
+  --text-primary: #f5f5f5;
+  --text-secondary: #aaaaaa;
+  --border-color: #333333;
+  --accent-color: #387ed1;
+}
+
+html,
+body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   2. FOOTER DESIGN SYSTEM STYLES
+   ========================================================================= */
+.footer-a {
+  text-decoration: none;
+  color: var(--text-primary) !important;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-options a {
+  color: var(--text-secondary) !important;
+  margin-top: 0.6rem;
+  font-size: 17px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-a:hover,
+.footer-options a:hover {
+  color: var(--accent-color) !important;
+}
+
+.footer-p {
+  color: var(--text-secondary) !important;
+  font-size: 0.65rem;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.footer-bottom a {
+  text-decoration: none;
+  color: var(--text-secondary) !important;
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   3. GLOBAL LAYOUTS & COMPONENT BLOCKS
+   ========================================================================= */
 body {
   margin: 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -13,7 +86,7 @@ code {
 }
 
 .nav-link {
-  margin-left: 40px;
+  margin: 0 15px;
 }
 
 #supportHero {
@@ -28,7 +101,9 @@ code {
 #supportWrapper {
   display: flex;
   justify-content: space-between;
-  margin: 0 150px;
+  background-color: #387ed1;
+  width: 100%;
+  overflow: hidden;
 }
 
 #supportHero input {
@@ -39,80 +114,25 @@ code {
   border: none;
 }
 
-body {
-  /* margin: 0; */
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-/* Apply Inter globally */
-body {
-  font-family: "Inter", sans-serif;
-}
-body {
-  overflow-x: hidden;
-}
-
-code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-.nav-link {
-  margin: 0 15px 0 15px;
-}
-
 .footer-icon {
   color: gray;
   font-size: 1.5rem;
 }
 
-.footer-a {
-  text-decoration: none;
-  color: black;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
 #foooter-list {
   padding: 0;
   margin: 0;
 }
+
 #footer-list li {
   list-style: none;
-  /* margin-top: 0.3rem; */
   padding: 0;
   margin: 0;
 }
+
 #footer-list a {
   padding: 0;
   margin: 0;
-}
-
-.footer-p {
-  color: #9b9b9b;
-  font-size: 0.65rem;
-  margin-top: 10px;
-}
-
-.footer-options a {
-  color: #666666;
-  margin-top: 0.6rem;
-  font-size: 17px;
-}
-
-.footer-bottom a {
-  text-decoration: none;
-  color: #938f8f;
-  font-size: 0.9rem;
-  margin: 0;
-  padding: 0;
-}
-
-#supportWrapper {
-  background-color: #387ed1;
-  width: 100%;
-  overflow: hidden;
 }
 
 #supportInp {
@@ -137,29 +157,31 @@ code {
 
 label {
   font-size: 1.2rem;
-  color: #656262;
+  color: var(--text-secondary) !important; /* FIXED: Adapts color for labels */
 }
 
-/* body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
+/* ==========================================================================
+   4. FIXED FORM REGISTRATION INTERFACES (LOGIN & SIGNUP FIX)
+   ========================================================================= */
 .form_container {
-  background-color: #fff;
+  /* FIXED: Turned white background to surface variable token */
+  background-color: var(--bg-surface) !important;
   padding: 4rem 6rem;
   border-radius: 3rem;
-  /* width: 100%; */
   width: 550px;
-  border: 2px solid black;
-  /* box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1); */
+  /* FIXED: Turned black border to responsive variable token */
+  border: 2px solid var(--border-color) !important;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .form_container > h2 {
   margin-block: 1rem;
   padding-block: 0.6rem;
-  color: rgba(0, 212, 255, 1);
+  color: var(
+    --accent-color
+  ) !important; /* FIXED: Keeps branded identity visible */
 }
 
 .form_container > form {
@@ -177,18 +199,28 @@ label {
 .form_container input {
   border: none;
   padding: 0.5rem;
-  border-bottom: 1px solid gray;
+  /* FIXED: Uses theme variable for input underline */
+  border-bottom: 1px solid var(--border-color) !important;
   font-size: 1.1rem;
   outline: none;
+  /* FIXED: Transparent prevents a white block background inside dark mode inputs */
+  background: transparent !important;
+  /* FIXED: Keeps typing text clearly readable in both themes */
+  color: var(--text-primary) !important;
 }
 
 .form_container input::placeholder {
   font-size: 0.9rem;
   font-style: italic;
+  color: var(
+    --text-secondary
+  ) !important; /* FIXED: Placeholders use secondary color */
 }
 
 .form_container button {
-  background-color: rgba(0, 212, 255, 1);
+  background-color: var(
+    --accent-color
+  ) !important; /* FIXED: Uses universal accent */
   color: #fff;
   border: none;
   padding: 0.6rem;
@@ -199,14 +231,17 @@ label {
 
 span a {
   text-decoration: none;
-  color: rgba(0, 212, 255, 1);
+  color: var(--accent-color) !important; /* FIXED */
 }
 
+/* ==========================================================================
+   5. WORKSPACE LANDING OVERRIDES
+   ========================================================================= */
 .home_page {
   height: 100vh;
   width: 100vw;
-  background: #000;
-  color: white;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -217,7 +252,7 @@ span a {
 }
 
 .home_page span {
-  color: rgba(0, 212, 255, 1);
+  color: var(--accent-color);
 }
 
 .home_page button {
@@ -232,7 +267,7 @@ span a {
 }
 
 .home_page button:hover {
-  background-color: rgba(0, 212, 255, 1);
+  background-color: var(--accent-color);
 }
 
 @media only screen and (max-width: 1200px) {
@@ -243,4 +278,15 @@ span a {
     padding: 0.6rem 1rem;
     font-size: 1.5rem;
   }
+}
+
+/* ==========================================================================
+   6. IMAGE UTILITIES
+   ========================================================================= */
+[data-theme="dark"] .theme-invert-img {
+  filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(1.05);
+}
+
+[data-theme="dark"] .logo-invert-white {
+  filter: brightness(0) invert(1) opacity(0.85) !important;
 }

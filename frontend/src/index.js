@@ -15,6 +15,7 @@ import App from "./App";
 import "react-toastify/dist/ReactToastify.css";
 import { CookiesProvider } from "react-cookie";
 import axios from "axios";
+import { ThemeProvider } from "./context/ThemeContext";
 
 axios.defaults.withCredentials = true;
 
@@ -22,7 +23,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <CookiesProvider>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </CookiesProvider>
   </BrowserRouter>,
 );

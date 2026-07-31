@@ -7,7 +7,7 @@ function OpenAccount() {
         <img
           src="media/images/homeHero.png"
           alt="Hero Image"
-          className="mb-5"
+          className="img-fluid theme-invert-img mb-5"
         />
         <h1 className="mt-5">Open a Zerodha account</h1>
         <p>

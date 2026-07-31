@@ -65,7 +65,7 @@ const Login = () => {
   return (
     <div className="container mt-5" style={{ marginLeft: "30rem" }}>
       <div className="form_container">
-        <h2>Login Account</h2>
+        <h2 className="text-center">Login Account</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email">Email</label>

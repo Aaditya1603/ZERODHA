@@ -2,101 +2,88 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer style={{ backgroundColor: "rgb(250, 250, 250)" }}>
-      <div className="container border-top mt-5">
+    <footer
+      style={{
+        backgroundColor: "var(--bg-surface)",
+        transition: "background-color 0.2s ease, border-color 0.2s ease",
+        borderTop: "1px solid var(--border-color)",
+      }}
+    >
+      <div className="container mt-5">
         <div className="row mt-5">
           <div className="col">
-            <img src="media/images/logo.svg" style={{ width: "50%" }} />
-            <p>
+            <img
+              src="media/images/logo.svg"
+              style={{ width: "50%" }}
+              alt="Logo"
+            />
+
+            <p className="footer-p">
               &copy; 2010 - 2024, Not Zerodha Broking Ltd. All rights reserved.
             </p>
 
-            <i class="fa fa-twitter fa-2x me-3" aria-hidden="true"></i>
+            <i className="fa fa-twitter fa-2x me-3" aria-hidden="true"></i>
             <i
-              class="fa fa-facebook-official fa-2x me-3"
+              className="fa fa-facebook-official fa-2x me-3"
               aria-hidden="true"
             ></i>
-            <i class="fa fa-instagram fa-2x me-3" aria-hidden="true"></i>
-            <i class="fa fa-linkedin-square fa-2x me-3" aria-hidden="true"></i>
-            <i class="fa fa-telegram fa-2x me-3" aria-hidden="true"></i>
+            <i className="fa fa-instagram fa-2x me-3" aria-hidden="true"></i>
+            <i
+              className="fa fa-linkedin-square fa-2x me-3"
+              aria-hidden="true"
+            ></i>
+            <i className="fa fa-telegram fa-2x me-3" aria-hidden="true"></i>
           </div>
-          <div className="col ">
-            <p>Company</p>
-            <a href="" style={{ textDecoration: "none" }}>
-              About
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Products
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Pricing
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Referral programme
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Careers
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Zerodha.tech
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Press & media
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Zerodha cares (CSR)
-            </a>
-            <br />
-          </div>
+
           <div className="col">
-            <p>Support</p>
-            <a href="" style={{ textDecoration: "none" }}>
-              Contact
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Support portal
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Z-Connect blog
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              List of charges
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Downloads & resources
-            </a>
-            <br />
+            <p style={{ fontWeight: "600", color: "var(--text-primary)" }}>
+              Company
+            </p>
+
+            <div className="footer-options d-flex flex-column">
+              <a href="">About</a>
+              <a href="">Products</a>
+              <a href="">Pricing</a>
+              <a href="">Referral programme</a>
+              <a href="">Careers</a>
+              <a href="">Zerodha.tech</a>
+              <a href="">Press & media</a>
+              <a href="">Zerodha cares (CSR)</a>
+            </div>
           </div>
+
           <div className="col">
-            <p>Account</p>
-            <a href="" style={{ textDecoration: "none" }}>
-              Open an account
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              Fund transfer
-            </a>
-            <br />
-            <a href="" style={{ textDecoration: "none" }}>
-              60 day challenge
-            </a>
-            <br />
+            <p style={{ fontWeight: "600", color: "var(--text-primary)" }}>
+              Support
+            </p>
+            <div className="footer-options d-flex flex-column">
+              <a href="">Contact</a>
+              <a href="">Support portal</a>
+              <a href="">Z-Connect blog</a>
+              <a href="">List of charges</a>
+              <a href="">Downloads & resources</a>
+            </div>
+          </div>
+
+          <div className="col">
+            <p style={{ fontWeight: "600", color: "var(--text-primary)" }}>
+              Account
+            </p>
+            <div className="footer-options d-flex flex-column">
+              <a href="">Open an account</a>
+              <a href="">Fund transfer</a>
+              <a href="">60 day challenge</a>
+            </div>
           </div>
         </div>
+
         <div
-          className="mt-5 text-small text-muted"
-          style={{ fontSize: "14px" }}
+          className="mt-5 footer-p"
+          style={{
+            fontSize: "12px",
+            borderTop: "1px solid var(--border-color)",
+            paddingTop: "20px",
+          }}
         >
           <p>
             Zerodha Broking Ltd.: Member of NSE, BSE, MCX & MSEI – SEBI

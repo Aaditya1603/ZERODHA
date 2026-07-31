@@ -5,10 +5,7 @@ import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 import Universe from "./Universe";
 
-// import Navbar from "../Navbar";
-// import Footer from "../Footer";
-
-function PricingPage() {
+function ProductPage() {
   return (
     <>
       <Hero />
@@ -51,13 +48,28 @@ function PricingPage() {
         googlePlay=""
         appStore=""
       />
-      <p className="text-center mt-5 mb-5">
-        Want to know more about our technology stack? Check out the Zerodha.tech
-        blog.
+
+      {/* FIXED: Mapped this standalone text block to use theme variables so it is bright and visible */}
+      <p
+        className="text-center mt-5 mb-5"
+        style={{ color: "var(--text-primary)", fontSize: "1.1rem" }}
+      >
+        Want to know more about our technology stack?{" "}
+        <a
+          href=""
+          style={{
+            textDecoration: "none",
+            color: "var(--accent-color)",
+            fontWeight: "500",
+          }}
+        >
+          Check out the Zerodha.tech blog.
+        </a>
       </p>
+
       <Universe />
     </>
   );
 }
 
-export default PricingPage;
+export default ProductPage;
