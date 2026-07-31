@@ -6,8 +6,17 @@ import Home from "./components/Home";
 
 function ThemeWrapper() {
   useEffect(() => {
-    const savedTheme = localStorage.getItem("app-theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
+    const urlParams = new URLSearchParams(window.location.search);
+    const themeParam = urlParams.get("theme");
+
+    let activeTheme = localStorage.getItem("app-theme") || "light";
+
+    if (themeParam === "light" || themeParam === "dark") {
+      activeTheme = themeParam;
+      localStorage.setItem("app-theme", themeParam);
+    }
+
+    document.documentElement.setAttribute("data-theme", activeTheme);
   }, []);
 
   return <Home />;

@@ -43,10 +43,14 @@ const Login = () => {
 
       if (success) {
         handleSuccess(message);
-        // window.location.href = `http://localhost:3000`
         if (token) {
           localStorage.setItem("token", token);
-          window.location.href = `https://zerodha-dashboard-wj7w.onrender.com?token=${token}`;
+
+          // 1. Grab your active landing page theme state string parameter
+          const currentTheme = localStorage.getItem("app-theme") || "light";
+
+          // 2. FIXED: Appended '&theme=${currentTheme}' to your existing redirection path string
+          window.location.href = `https://zerodha-dashboard-wj7w.onrender.com?token=${token}&theme=${currentTheme}`;
         }
       } else {
         handleError(message);
