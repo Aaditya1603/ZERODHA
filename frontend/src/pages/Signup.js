@@ -59,7 +59,10 @@ const Signup = () => {
   };
 
   return (
-    <div className="container mt-5" style={{ marginLeft: "30rem" }}>
+    <div
+      className="=container-fluid d-flex justify-content-center align-items-center min-vh-100"
+      style={{ backgroundColor: "var(--bg-primary)" }}
+    >
       <div className="form_container">
         <h2 className="text-center">Signup Account</h2>
         <form onSubmit={handleSubmit}>
@@ -94,8 +97,11 @@ const Signup = () => {
             />
           </div>
           <button type="submit">Submit</button>
-          <span>
-            Already have an account? <Link to={"/login"}>Login</Link>
+          <span style={{ color: "var(--text-secondary)" }}>
+            Already have an account?{" "}
+            <Link to={"/login"} style={{ color: "var(--accent-color)" }}>
+              Login
+            </Link>
           </span>
         </form>
         <ToastContainer />

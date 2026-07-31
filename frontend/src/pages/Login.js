@@ -31,7 +31,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://zerodha-backend-h3nz.onrender.com/login",
+        "https://onrender.com",
         {
           ...inputValue,
         },
@@ -45,12 +45,8 @@ const Login = () => {
         handleSuccess(message);
         if (token) {
           localStorage.setItem("token", token);
-
-          // 1. Grab your active landing page theme state string parameter
           const currentTheme = localStorage.getItem("app-theme") || "light";
-
-          // 2. FIXED: Appended '&theme=${currentTheme}' to your existing redirection path string
-          window.location.href = `https://zerodha-dashboard-wj7w.onrender.com?token=${token}&theme=${currentTheme}`;
+          window.location.href = `https://onrender.com{token}&theme=${currentTheme}`;
         }
       } else {
         handleError(message);
@@ -67,7 +63,11 @@ const Login = () => {
   };
 
   return (
-    <div className="container mt-5" style={{ marginLeft: "30rem" }}>
+    // 1. FIXED: Removed container offset margins and centered the form card globally on a full height viewport canvas
+    <div
+      className="container-fluid d-flex justify-content-center align-items-center min-vh-100"
+      style={{ backgroundColor: "var(--bg-primary)" }}
+    >
       <div className="form_container">
         <h2 className="text-center">Login Account</h2>
         <form onSubmit={handleSubmit}>
@@ -92,8 +92,17 @@ const Login = () => {
             />
           </div>
           <button type="submit">Submit</button>
-          <span>
-            Already have an account? <Link to={"/signup"}>Signup</Link>
+          <span
+            style={{
+              color: "var(--text-secondary)",
+              marginTop: "1rem",
+              display: "block",
+            }}
+          >
+            Don't have an account?{" "}
+            <Link to={"/signup"} style={{ color: "var(--accent-color)" }}>
+              Signup
+            </Link>
           </span>
         </form>
         <ToastContainer />
