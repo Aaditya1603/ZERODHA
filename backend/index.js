@@ -28,11 +28,10 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"],
     credentials: true,
+    preflightContinue: false,
     optionsSuccessStatus: 200,
   }),
 );
-
-app.options("(.*)", cors());
 
 app.use(bodyParser.json());
 app.use(cookieParser());
