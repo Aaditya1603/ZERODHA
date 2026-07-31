@@ -31,7 +31,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://onrender.com",
+        "https://zerodha-backend-h3nz.onrender.com/login",
         {
           ...inputValue,
         },
@@ -46,7 +46,7 @@ const Login = () => {
         if (token) {
           localStorage.setItem("token", token);
           const currentTheme = localStorage.getItem("app-theme") || "light";
-          window.location.href = `https://onrender.com{token}&theme=${currentTheme}`;
+          window.location.href = `https://zerodha-dashboard-wj7w.onrender.com?token=${token}&theme=${currentTheme}`;
         }
       } else {
         handleError(message);
@@ -63,7 +63,6 @@ const Login = () => {
   };
 
   return (
-    // 1. FIXED: Removed container offset margins and centered the form card globally on a full height viewport canvas
     <div
       className="container-fluid d-flex justify-content-center align-items-center min-vh-100"
       style={{ backgroundColor: "var(--bg-primary)" }}
