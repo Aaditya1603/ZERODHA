@@ -1,3 +1,26 @@
+[data-theme="dark"],
+[data-theme="dark"] body,
+[data-theme="dark"] #root,
+[data-theme="dark"] div,
+[data-theme="dark"] nav,
+[data-theme="dark"] header {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] input {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .text-muted,
+[data-theme="dark"] p,
+[data-theme="dark"] span:not([style*="color"]) {
+  color: var(--text-secondary) !important;
+}
+
 :root {
   --bg-primary: #ffffff;
   --bg-surface: #fafafa;
