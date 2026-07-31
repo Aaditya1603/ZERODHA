@@ -219,6 +219,19 @@ label {
   opacity: 0.9;
 }
 
+.form_container input:-webkit-autofill,
+.form_container input:-webkit-autofill:hover,
+.form_container input:-webkit-autofill:focus,
+.form_container input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--text-primary) !important;
+  color: var(--text-primary) !important;
+
+  box-shadow: 0 0 0 1000px var(--bg-surface) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-surface) inset !important;
+
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
 span a {
   text-decoration: none;
   color: var(--accent-color) !important;
