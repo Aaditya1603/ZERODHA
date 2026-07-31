@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. THEME DESIGN TOKENS
-   ========================================================================= */
 :root {
   --bg-primary: #ffffff;
   --bg-surface: #fafafa;
@@ -11,8 +8,8 @@
 }
 
 [data-theme="dark"] {
-  --bg-primary: #121212; /* Restores proper contrast background */
-  --bg-surface: #0b0b0b; /* Distinct deep charcoal tone for footer */
+  --bg-primary: #121212;
+  --bg-surface: #0b0b0b;
   --text-primary: #f5f5f5;
   --text-secondary: #aaaaaa;
   --border-color: #333333;
@@ -30,9 +27,6 @@ body {
   padding: 0;
 }
 
-/* ==========================================================================
-   2. FOOTER DESIGN SYSTEM STYLES
-   ========================================================================= */
 .footer-a {
   text-decoration: none;
   color: var(--text-primary) !important;
@@ -69,9 +63,6 @@ body {
   padding: 0;
 }
 
-/* ==========================================================================
-   3. GLOBAL LAYOUTS & COMPONENT BLOCKS
-   ========================================================================= */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -157,19 +148,14 @@ code {
 
 label {
   font-size: 1.2rem;
-  color: var(--text-secondary) !important; /* FIXED: Adapts color for labels */
+  color: var(--text-secondary) !important;
 }
 
-/* ==========================================================================
-   4. FIXED FORM REGISTRATION INTERFACES (LOGIN & SIGNUP FIX)
-   ========================================================================= */
 .form_container {
-  /* FIXED: Turned white background to surface variable token */
   background-color: var(--bg-surface) !important;
   padding: 4rem 6rem;
   border-radius: 3rem;
   width: 550px;
-  /* FIXED: Turned black border to responsive variable token */
   border: 2px solid var(--border-color) !important;
   transition:
     background-color 0.2s ease,
@@ -179,9 +165,7 @@ label {
 .form_container > h2 {
   margin-block: 1rem;
   padding-block: 0.6rem;
-  color: var(
-    --accent-color
-  ) !important; /* FIXED: Keeps branded identity visible */
+  color: var(--accent-color) !important;
 }
 
 .form_container > form {
@@ -196,47 +180,69 @@ label {
   gap: 0.3rem;
 }
 
-.form_container input {
-  border: none;
-  padding: 0.5rem;
-  /* FIXED: Uses theme variable for input underline */
+.form_container input,
+.form_container input[type="text"],
+.form_container input[type="email"],
+.form_container input[type="password"] {
+  border: none !important;
+  padding: 0.5rem !important;
   border-bottom: 1px solid var(--border-color) !important;
-  font-size: 1.1rem;
-  outline: none;
-  /* FIXED: Transparent prevents a white block background inside dark mode inputs */
+  font-size: 1.1rem !important;
+  outline: none !important;
+  background-color: transparent !important;
   background: transparent !important;
-  /* FIXED: Keeps typing text clearly readable in both themes */
   color: var(--text-primary) !important;
+}
+
+.form_container input:focus,
+.form_container input:active,
+.form_container input[type="text"]:focus,
+.form_container input[type="email"]:focus,
+.form_container input[type="password"]:focus {
+  background-color: transparent !important;
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.form_container input:-webkit-autofill,
+.form_container input:-webkit-autofill:hover,
+.form_container input:-webkit-autofill:focus,
+.form_container input:-webkit-autofill:active,
+.form_container input[type="text"]:-webkit-autofill,
+.form_container input[type="email"]:-webkit-autofill,
+.form_container input[type="password"]:-webkit-autofill {
+  -webkit-text-fill-color: var(--text-primary) !important;
+  color: var(--text-primary) !important;
+
+  box-shadow: 0 0 0 1000px var(--bg-surface) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-surface) inset !important;
+
+  transition: background-color 999999s ease-in-out 0s !important;
 }
 
 .form_container input::placeholder {
   font-size: 0.9rem;
   font-style: italic;
-  color: var(
-    --text-secondary
-  ) !important; /* FIXED: Placeholders use secondary color */
+  color: var(--text-secondary) !important;
 }
 
 .form_container button {
-  background-color: var(
-    --accent-color
-  ) !important; /* FIXED: Uses universal accent */
-  color: #fff;
-  border: none;
-  padding: 0.6rem;
-  font-size: 1rem;
+  background-color: var(--accent-color) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 0.6rem !important;
+  font-size: 1rem !important;
   cursor: pointer;
-  border-radius: 0.3rem;
+  border-radius: 0.3rem !important;
 }
 
 span a {
   text-decoration: none;
-  color: var(--accent-color) !important; /* FIXED */
+  color: var(--accent-color) !important;
 }
 
-/* ==========================================================================
-   5. WORKSPACE LANDING OVERRIDES
-   ========================================================================= */
 .home_page {
   height: 100vh;
   width: 100vw;
@@ -280,13 +286,39 @@ span a {
   }
 }
 
-/* ==========================================================================
-   6. IMAGE UTILITIES
-   ========================================================================= */
 [data-theme="dark"] .theme-invert-img {
   filter: invert(1) hue-rotate(180deg) brightness(0.95) contrast(1.05);
 }
 
 [data-theme="dark"] .logo-invert-white {
   filter: brightness(0) invert(1) opacity(0.85) !important;
+}
+
+#supportHero {
+  background-color: rgb(56, 126, 209);
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+[data-theme="dark"] #supportHero {
+  background-color: #161c24;
+}
+
+#supportHero a {
+  color: white;
+  text-decoration: none;
+}
+
+#supportHero a:hover {
+  text-decoration: underline;
+}
+
+#supportHero input {
+  padding: 20px 50px;
+  width: 100%;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }

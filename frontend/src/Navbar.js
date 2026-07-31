@@ -90,7 +90,7 @@ function Navbar() {
                 cursor: "pointer",
                 padding: "6px 12px",
                 borderRadius: "20px",
-                border: "1px solid var(--text-primary)",
+                border: "1px solid var(--border-color)",
                 background: "transparent",
                 color: "var(--text-primary)",
                 fontSize: "14px",
