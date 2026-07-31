@@ -21,14 +21,18 @@ const app = express();
 app.use(
   cors({
     origin: [
+      "https://zerodha-frontend-kch6.onrender.com",
       "https://zerodha-frontend-kch5.onrender.com",
       "https://zerodha-dashboard-wj7w.onrender.com",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"],
     credentials: true,
+    optionsSuccessStatus: 200,
   }),
 );
+
+app.options("(.*)", cors());
 
 app.use(bodyParser.json());
 app.use(cookieParser());
