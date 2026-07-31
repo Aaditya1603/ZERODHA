@@ -972,3 +972,17 @@ hr {
   color: var(--text-primary) !important;
   border: 1px solid var(--border-color) !important;
 }
+
+.btn-exit-dashboard {
+  color: #ffffff !important;
+  background-color: #df4949 !important;
+  padding: 6px 14px !important;
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.btn-exit-dashboard:hover {
+  background-color: #c53e3e !important;
+}

@@ -83,7 +83,7 @@ const Menu = () => {
           <li>
             <p
               onClick={goToFrontend}
-              className={menuClass}
+              className="btn-exit-dashboard"
               style={{ cursor: "pointer" }}
             >
               Exit Dashboard
