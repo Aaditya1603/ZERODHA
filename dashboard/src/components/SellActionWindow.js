@@ -24,11 +24,39 @@ const SellActionWindow = ({ uid }) => {
   };
 
   return (
-    <div className="container" id="buy-window" draggable="true">
+    <div className="container" id="sell-window" draggable="true">
       <div className="regular-order">
+        <div
+          className="sell-window-header"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingBottom: "10px",
+            marginBottom: "15px",
+            borderBottom: "1px solid #ccc",
+          }}
+        >
+          <h2 style={{ margin: 0, fontSize: "1.3rem", fontWeight: "600" }}>
+            {uid}
+          </h2>
+          <span
+            style={{
+              fontSize: "0.75rem",
+              backgroundColor: "#df514c",
+              color: "#fff",
+              padding: "2px 6px",
+              borderRadius: "3px",
+              fontWeight: "bold",
+            }}
+          >
+            SELL
+          </span>
+        </div>
+
         <div className="inputs">
           <fieldset>
-            <legend>Qty</legend>
+            <legend>Qty.</legend>
             <input
               type="number"
               name="qty"
@@ -40,7 +68,7 @@ const SellActionWindow = ({ uid }) => {
             />
           </fieldset>
           <fieldset>
-            <legend>price</legend>
+            <legend>Price</legend>
             <input
               type="number"
               name="price"
@@ -55,7 +83,10 @@ const SellActionWindow = ({ uid }) => {
       </div>
 
       <div className="buttons">
-        <span>Margin required ₹140.65</span>
+        <span>
+          Margin required ₹
+          {((stockQuantity || 0) * (stockPrice || 0)).toFixed(2)}
+        </span>
         <div>
           <Link className="btn btn-danger" onClick={handleSellClick}>
             Sell

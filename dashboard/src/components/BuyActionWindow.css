@@ -299,3 +299,7 @@ html[data-theme="dark"] .inputs fieldset {
 html[data-theme="dark"] .buy-window-header {
   border-bottom-color: #262629 !important;
 }
+
+html[data-theme="dark"] .sell-window-header {
+  border-bottom-color: #262629 !important;
+}
