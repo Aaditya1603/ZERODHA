@@ -1,10 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Summary = () => {
+  const [username, setUsername] = useState("User");
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const response = await axios.get(
+          "https://zerodha-backend-h3nz.onrender.com",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+
+        if (response.data && response.data.status && response.data.username) {
+          setUsername(response.data.username);
+        }
+      } catch (err) {
+        console.error(
+          "Failed to fetch user data, falling back to local storage",
+          err,
+        );
+
+        const savedUser = localStorage.getItem("username");
+        if (savedUser) {
+          setUsername(savedUser);
+        }
+      }
+    };
+
+    fetchUserData();
+  }, []);
   return (
     <>
       <div className="username">
-        <h6>Hi, User!</h6>
+        <h6>Hi, {username}!</h6>
         <hr className="divider" />
       </div>
 

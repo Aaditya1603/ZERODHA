@@ -1,10 +1,10 @@
 const User = require("../models/UserModel");
 const bcrypt = require("bcryptjs");
 const { createSecretToken } = require("../utils/SecretToken");
+const jwt = require("jsonwebtoken");
 
 module.exports.Signup = async (req, res, next) => {
   try {
-    // 1. Log exactly what data is coming into the server
     console.log("BACKEND SIGNUP RECEIVED BODY:", req.body);
 
     const { email, password, username, createdAt } = req.body;
@@ -39,7 +39,6 @@ module.exports.Signup = async (req, res, next) => {
       .status(201)
       .json({ message: "Signed up successfully", success: true, user });
   } catch (error) {
-    // 2. This will print the exact reason for your 400/500 errors in Render logs
     console.error("DETAILED SIGNUP SYSTEM CRASH ERROR:", error);
     return res.status(500).json({
       message: "Internal server error during registration",
@@ -96,5 +95,38 @@ module.exports.Login = async (req, res, next) => {
       success: false,
       error: error.message,
     });
+
+    module.exports.userVerification = async (req, res) => {
+      const token = req.cookies.token;
+      if (!token) {
+        return res.json({ status: false });
+      }
+      jwt.verify(token, process.env.TOKEN_KEY, async (err, data) => {
+        if (err) {
+          return res.json({ status: false });
+        } else {
+          const user = await User.findById(data.id);
+          if (user) {
+            return res.json({ status: true, name: user.username || user.name });
+          } else {
+            return res.json({ status: false });
+          }
+        }
+      });
+    };
+    module.exports.getProfile = async (req, res) => {
+      try {
+        if (!req.user) {
+          return res
+            .status(404)
+            .json({ status: false, message: "User context not found" });
+        }
+        return res
+          .status(200)
+          .json({ status: true, username: req.user.username });
+      } catch (error) {
+        return res.status(500).json({ status: false, error: error.message });
+      }
+    };
   }
 };

@@ -6,4 +6,6 @@ router.post("/signup", Signup);
 router.post("/login", Login);
 router.post("/verify", userVerification);
 
+router.get("/profile", userVerification, getProfile);
+
 module.exports = router;
