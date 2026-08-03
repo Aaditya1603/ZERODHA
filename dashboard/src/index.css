@@ -45,8 +45,8 @@
 :root {
   --bg-primary: #ffffff;
   --bg-surface: #fafafa;
-  --text-primary: #f3ecec;
-  --text-secondary: #f1ecec;
+  --text-primary: #222222;
+  --text-secondary: #555555;
   --border-color: #eeeeee;
   --accent-color: #387ed1;
 }
@@ -55,7 +55,7 @@
   --bg-primary: #0d0d0e;
   --bg-surface: #161618;
   --text-primary: #ffffff;
-  --text-secondary: #f9f4f4;
+  --text-secondary: #cccccc;
   --border-color: #262629;
   --accent-color: #387ed1;
 }
