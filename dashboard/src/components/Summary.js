@@ -11,15 +11,10 @@ const Summary = () => {
 
         const response = await axios.get(
           "https://zerodha-backend-h3nz.onrender.com",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
         );
 
         if (response.data && response.data.status && response.data.username) {
-          setUsername(response.data.username);
+          setUsername(response.data.name);
         }
       } catch (err) {
         console.error(
