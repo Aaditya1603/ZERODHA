@@ -236,8 +236,8 @@
 }
 
 .btn-grey:hover {
-  background: #9b9b9b;
-  color: #fff;
+  background: #fff;
+  color: #9b9b9b;
 }
 
 html:not([data-theme="dark"]) .container,
