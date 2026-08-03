@@ -239,3 +239,41 @@
   background: #9b9b9b;
   color: #fff;
 }
+
+html:not([data-theme="dark"]) .container,
+html:not([data-theme="dark"]) #buy-window,
+html:not([data-theme="dark"]) .regular-order {
+  background-color: #ffffff !important;
+  color: #222222 !important;
+}
+
+html:not([data-theme="dark"]) .container legend,
+html:not([data-theme="dark"]) .container label,
+html:not([data-theme="dark"]) .container span,
+html:not([data-theme="dark"]) .container input {
+  color: #222222 !important;
+}
+
+html:not([data-theme="dark"]) .inputs fieldset {
+  background-color: #ffffff !important;
+  border: 1px solid #cccccc !important;
+}
+
+html[data-theme="dark"] .container,
+html[data-theme="dark"] #buy-window,
+html[data-theme="dark"] .regular-order {
+  background-color: #161618 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .container legend,
+html[data-theme="dark"] .container label,
+html[data-theme="dark"] .container span,
+html[data-theme="dark"] .container input {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .inputs fieldset {
+  background-color: #0d0d0e !important;
+  border: 1px solid #262629 !important;
+}
