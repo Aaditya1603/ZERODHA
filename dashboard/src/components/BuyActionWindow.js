@@ -35,6 +35,33 @@ const BuyActionWindow = ({ uid }) => {
   return (
     <div className="container" id="buy-window" draggable="true">
       <div className="regular-order">
+        <div
+          className="buy-window-header"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingBottom: "10px",
+            marginBottom: "15px",
+            borderBottom: "1px solid #ccc",
+          }}
+        >
+          <h2 style={{ margin: 0, fontSize: "1.3rem", fontWeight: "600" }}>
+            {uid}
+          </h2>
+          <span
+            style={{
+              fontSize: "0.75rem",
+              backgroundColor: "#387ed1",
+              color: "#fff",
+              padding: "2px 6px",
+              borderRadius: "3px",
+              fontWeight: "bold",
+            }}
+          >
+            BUY
+          </span>
+        </div>
         <div className="inputs">
           <fieldset>
             <legend>Qty.</legend>
@@ -61,7 +88,10 @@ const BuyActionWindow = ({ uid }) => {
       </div>
 
       <div className="buttons">
-        <span>Margin required ₹140.65</span>
+        <span>
+          Margin required ₹
+          {((stockQuantity || 0) * (stockPrice || 0)).toFixed(2)}
+        </span>
         <div>
           <Link className="btn btn-blue" onClick={handleBuyClick}>
             Buy
