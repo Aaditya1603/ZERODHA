@@ -243,17 +243,17 @@
   color: #ffffff !important;
 }
 
-html:not([data-theme="dark"]) .buy-action-modal-card,
+html:not([data-theme="dark"]) .container,
 html:not([data-theme="dark"]) #buy-window,
 html:not([data-theme="dark"]) .regular-order {
   background-color: #ffffff !important;
   color: #222222 !important;
 }
 
-html:not([data-theme="dark"]) .buy-action-modal-card legend,
-html:not([data-theme="dark"]) .buy-action-modal-card label,
-html:not([data-theme="dark"]) .buy-action-modal-card span,
-html:not([data-theme="dark"]) .buy-action-modal-card input {
+html:not([data-theme="dark"]) .container legend,
+html:not([data-theme="dark"]) .container label,
+html:not([data-theme="dark"]) .container span,
+html:not([data-theme="dark"]) .container input {
   color: #222222 !important;
 }
 
@@ -274,10 +274,10 @@ html[data-theme="dark"] .regular-order {
   color: #ffffff !important;
 }
 
-html[data-theme="dark"] .buy-action-modal-card legend,
-html[data-theme="dark"] .buy-action-modal-card label,
-html[data-theme="dark"] .buy-action-modal-card span,
-html[data-theme="dark"] .buy-action-modal-card input {
+html[data-theme="dark"] .container legend,
+html[data-theme="dark"] .container label,
+html[data-theme="dark"] .container span,
+html[data-theme="dark"] .container input {
   color: #ffffff !important;
 }
 

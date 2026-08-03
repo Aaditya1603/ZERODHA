@@ -33,7 +33,7 @@ const BuyActionWindow = ({ uid }) => {
   };
 
   return (
-    <div className="buy-action-modal-card" id="buy-window" draggable="true">
+    <div className="container" id="buy-window" draggable="true">
       <div className="regular-order">
         <div className="inputs">
           <fieldset>
