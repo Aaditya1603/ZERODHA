@@ -238,8 +238,13 @@
   background: #74a7fa;
 }
 
-.btn-grey:hover {
-  background: #9b9b9b !important;
+html:not([data-theme="dark"]) .btn-grey:hover {
+  background-color: #9b9b9b !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn-grey:hover {
+  background-color: #9b9b9b !important;
   color: #ffffff !important;
 }
 
