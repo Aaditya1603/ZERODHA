@@ -238,28 +238,3 @@
   background: #9b9b9b;
   color: #fff;
 }
-
-/* Update these rules in your BuyActionWindow.css file */
-.buy-action-modal-card .options {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.buy-action-modal-card .buttons {
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  top: 10%;
-  padding: 0 20px;
-}
-
-.buy-action-modal-card .btn-grey {
-  background: var(--border-color) !important;
-  color: var(--text-primary) !important;
-}
