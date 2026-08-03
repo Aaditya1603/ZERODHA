@@ -49,7 +49,6 @@ function ProductPage() {
         appStore=""
       />
 
-      {/* FIXED: Mapped this standalone text block to use theme variables so it is bright and visible */}
       <p
         className="text-center mt-5 mb-5"
         style={{ color: "var(--text-primary)", fontSize: "1.1rem" }}
