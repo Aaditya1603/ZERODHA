@@ -243,17 +243,22 @@
   color: #ffffff !important;
 }
 
-html:not([data-theme="dark"]) .container,
+html:not([data-theme="dark"]) .buy-action-modal-card,
 html:not([data-theme="dark"]) #buy-window,
 html:not([data-theme="dark"]) .regular-order {
   background-color: #ffffff !important;
   color: #222222 !important;
 }
 
-html:not([data-theme="dark"]) .container legend,
-html:not([data-theme="dark"]) .container label,
-html:not([data-theme="dark"]) .container span,
-html:not([data-theme="dark"]) .container input {
+html:not([data-theme="dark"]) .buy-action-modal-card legend,
+html:not([data-theme="dark"]) .buy-action-modal-card label,
+html:not([data-theme="dark"]) .buy-action-modal-card span,
+html:not([data-theme="dark"]) .buy-action-modal-card input {
+  color: #222222 !important;
+}
+
+html:not([data-theme="dark"]) .btn-grey {
+  background-color: #eeeeee !important;
   color: #222222 !important;
 }
 
@@ -262,17 +267,22 @@ html:not([data-theme="dark"]) .inputs fieldset {
   border: 1px solid #cccccc !important;
 }
 
-html[data-theme="dark"] .container,
+html[data-theme="dark"] .buy-action-modal-card,
 html[data-theme="dark"] #buy-window,
 html[data-theme="dark"] .regular-order {
   background-color: #161618 !important;
   color: #ffffff !important;
 }
 
-html[data-theme="dark"] .container legend,
-html[data-theme="dark"] .container label,
-html[data-theme="dark"] .container span,
-html[data-theme="dark"] .container input {
+html[data-theme="dark"] .buy-action-modal-card legend,
+html[data-theme="dark"] .buy-action-modal-card label,
+html[data-theme="dark"] .buy-action-modal-card span,
+html[data-theme="dark"] .buy-action-modal-card input {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn-grey {
+  background-color: #262629 !important;
   color: #ffffff !important;
 }
 
