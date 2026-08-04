@@ -89,7 +89,7 @@ function Universe() {
         </div>
 
         <div className="col-12 mt-5">
-          <a href="https://zerodha-frontend-kch5.onrender.com/signup">
+          <Link to="/signup">
             <button
               className="p-2 btn btn-primary fs-5 mb-5"
               style={{
@@ -101,7 +101,7 @@ function Universe() {
             >
               Signup Now
             </button>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
