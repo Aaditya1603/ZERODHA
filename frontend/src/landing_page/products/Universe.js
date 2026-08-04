@@ -5,7 +5,9 @@ function Universe() {
   return (
     <div className="container mt-5">
       <div className="row text-center">
-        <h1 style={{ color: "var(--text-primary)" }}>The Zerodha Universe</h1>
+        <h1 style={{ color: "var(--text-primary)" }}>
+          The AlphaTrades Universe
+        </h1>
         <p style={{ color: "var(--text-secondary)", marginBottom: "3rem" }}>
           Extend your trading and investment experience even further with our
           partner platforms

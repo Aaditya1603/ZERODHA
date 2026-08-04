@@ -33,7 +33,9 @@ function Team() {
           <h4 className="mt-3" style={{ color: "var(--text-primary)" }}>
             Aaditya Bhardwaj
           </h4>
-          <h6 style={{ color: "var(--text-secondary)" }}>Founder, CEO</h6>
+          <h6 style={{ color: "var(--text-secondary)" }}>
+            Creator & Lead Engineer
+          </h6>
         </div>
 
         <div
@@ -41,26 +43,57 @@ function Team() {
           style={{ color: "var(--text-secondary)" }}
         >
           <p>
-            Aaditya founded Zerodha in 2010 to overcome the hurdles he faced
-            during his decade long stint as a trader. Today, Zerodha has changed
-            the landscape of the Indian broking industry.{" "}
+            Aaditya engineered AlphaTrades to overcome the technological
+            bottlenecks and interface complexities often found in modern retail
+            brokerage platforms. By prioritizing speed and visual clarity,
+            AlphaTrade reimagines how users track and manage real-time financial
+            market portfolios.
           </p>
           <p>
-            He is a member of the SEBI Secondary Market Advisory Committee
-            (SMAC) and the Market Data Advisory Committee (MDAC).{" "}
-          </p>{" "}
-          <p>Playing basketball is his zen.</p>{" "}
+            As a full-stack engineer specialized in the MERN ecosystem, he is
+            focused on building highly scalable web applications, optimizing
+            backend architectures, and designing secure financial API systems.
+          </p>
+          <p>Playing cricket is his zen.</p>
           <p className="mt-4">
             Connect on{" "}
             <a
-              href=""
+              href="https://github.com/Aaditya1603"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 textDecoration: "none",
                 color: "var(--accent-color)",
                 fontWeight: "500",
               }}
             >
-              Homepage / TradingQnA / Twitter
+              GitHub
+            </a>
+            {" / "}
+            <a
+              href="https://www.linkedin.com/in/aaditya-bhardwaj-49590a277/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                textDecoration: "none",
+                color: "var(--accent-color)",
+                fontWeight: "500",
+              }}
+            >
+              LinkedIn
+            </a>
+            {" / "}
+            <a
+              href="YOUR_PORTFOLIO_URL_HERE"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                textDecoration: "none",
+                color: "var(--accent-color)",
+                fontWeight: "500",
+              }}
+            >
+              Portfolio
             </a>
           </p>
         </div>

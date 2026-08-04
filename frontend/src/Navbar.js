@@ -13,13 +13,22 @@ function Navbar() {
       }}
     >
       <div className="container p-2">
-        <Link className="navbar-brand" to="/">
-          <img
-            src="media/images/logo.svg"
-            className="theme-invert-img"
-            style={{ width: "25%" }}
-            alt="Logo"
-          />
+        <Link
+          className="navbar-brand"
+          to="/"
+          style={{ textDecoration: "none" }}
+        >
+          <h3
+            style={{
+              color: "var(--text-primary)",
+              fontSize: "1.65rem",
+              fontWeight: "700",
+              letterSpacing: "0.08em",
+              fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+            }}
+          >
+            AlphaTrades
+          </h3>
         </Link>
         <button
           className="navbar-toggler"

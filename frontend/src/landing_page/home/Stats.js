@@ -12,7 +12,7 @@ function Stats() {
             Customer-first always
           </h2>
           <p style={{ color: "var(--text-secondary)", lineHeight: "1.6" }}>
-            That's why 1.3+ crore customers trust Zerodha with ₹3.5+ lakhs
+            That's why 1.3+ crore customers trust AlphaTrades with ₹3.5+ lakhs
             crores worth of equity investments.
           </p>
           <h2 className="fs-4" style={{ color: "var(--text-primary)" }}>
@@ -23,7 +23,7 @@ function Stats() {
             High quality apps that you use at your pace, the way you like."
           </p>
           <h2 className="fs-4" style={{ color: "var(--text-primary)" }}>
-            The Zerodha universe
+            The AlphaTrades universe
           </h2>
           <p style={{ color: "var(--text-secondary)", lineHeight: "1.6" }}>
             Not just an app, but a whole ecosystem. Our investments in 30+

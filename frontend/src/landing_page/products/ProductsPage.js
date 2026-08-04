@@ -21,7 +21,7 @@ function ProductPage() {
       <RightSection
         imageURL="media/images/console.png"
         productName="Console"
-        productDesription="The central dashboard for your Zerodha account. Gain insights into your trades and investments with in-depth reports and visualisations."
+        productDesription="The central dashboard for your AlphaTrades account. Gain insights into your trades and investments with in-depth reports and visualisations."
         learnMore=""
       />
       <LeftSection
@@ -62,7 +62,7 @@ function ProductPage() {
             fontWeight: "500",
           }}
         >
-          Check out the Zerodha.tech blog.
+          Check out the AlphaTrades.tech blog.
         </a>
       </p>
 

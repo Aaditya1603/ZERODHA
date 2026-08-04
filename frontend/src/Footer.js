@@ -12,14 +12,20 @@ function Footer() {
       <div className="container mt-5">
         <div className="row mt-5">
           <div className="col">
-            <img
-              src="media/images/logo.svg"
-              style={{ width: "50%" }}
-              alt="Logo"
-            />
-
+            <h3
+              style={{
+                color: "var(--text-primary)",
+                fontSize: "1.65rem",
+                fontWeight: "700",
+                letterSpacing: "0.08em",
+                fontFamily: "'Inter', 'Helvetica Neue', sans-serif",
+              }}
+            >
+              AlphaTrades
+            </h3>
             <p className="footer-p">
-              &copy; 2010 - 2024, Not Zerodha Broking Ltd. All rights reserved.
+              &copy; 2010 - 2024, Not AlphaTrades Broking Ltd. All rights
+              reserved.
             </p>
 
             <i className="fa fa-twitter fa-2x me-3" aria-hidden="true"></i>
@@ -46,9 +52,9 @@ function Footer() {
               <a href="">Pricing</a>
               <a href="">Referral programme</a>
               <a href="">Careers</a>
-              <a href="">Zerodha.tech</a>
+              <a href="">AlphaTrades.tech</a>
               <a href="">Press & media</a>
-              <a href="">Zerodha cares (CSR)</a>
+              <a href="">AlphaTrades cares (ATR)</a>
             </div>
           </div>
 
@@ -59,7 +65,7 @@ function Footer() {
             <div className="footer-options d-flex flex-column">
               <a href="">Contact</a>
               <a href="">Support portal</a>
-              <a href="">Z-Connect blog</a>
+              <a href="">A-Connect blog</a>
               <a href="">List of charges</a>
               <a href="">Downloads & resources</a>
             </div>
@@ -86,15 +92,16 @@ function Footer() {
           }}
         >
           <p>
-            Zerodha Broking Ltd.: Member of NSE, BSE, MCX & MSEI – SEBI
+            AlphaTrades Broking Ltd.: Member of NSE, BSE, MCX & MSEI – SEBI
             Registration no.: INZ000031633 CDSL/NSDL: Depository services
-            through Zerodha Broking Ltd. – SEBI Registration no.: IN-DP-431-2019
-            Registered Address: Zerodha Broking Ltd., #153/154, 4th Cross,
-            Dollars Colony, Opp. Clarence Public School, J.P Nagar 4th Phase,
-            Bengaluru - 560078, Karnataka, India. For any complaints pertaining
-            to securities broking please write to complaints@zerodha.com, for DP
-            related to dp@zerodha.com. Please ensure you carefully read the Risk
-            Disclosure Document as prescribed by SEBI | ICF
+            through AlphaTrades Broking Ltd. – SEBI Registration no.:
+            IN-DP-431-2019 Registered Address: AlphaTrades Broking Ltd.,
+            #153/154, 4th Cross, Dollars Colony, Opp. Clarence Public School,
+            J.P Nagar 4th Phase, Bengaluru - 560078, Karnataka, India. For any
+            complaints pertaining to securities broking please write to
+            complaints@AlphaTrades.com, for DP related to dp@AlphaTrades.com.
+            Please ensure you carefully read the Risk Disclosure Document as
+            prescribed by SEBI | ICF
           </p>
 
           <p>
@@ -144,7 +151,7 @@ function Footer() {
             make payment in case of allotment. In case of non allotment the
             funds will remain in your bank account. As a business we don't give
             stock tips, and have not authorized anyone to trade on behalf of
-            others. If you find anyone claiming to be part of Zerodha and
+            others. If you find anyone claiming to be part of AlphaTrades and
             offering such services, please create a ticket here.
           </p>
 
@@ -159,7 +166,7 @@ function Footer() {
           <p>
             Fixed deposit products offered on this platform are third-party
             products (TPP) and are not Exchange traded products. These are
-            offered through Blostem Fintech Private Limited. Zerodha Broking
+            offered through Blostem Fintech Private Limited. AlphaTrades Broking
             Limited (SEBI Registration No.: INZ000031633) is acting solely as a
             distributor for these products. Any disputes arising with respect to
             such distribution activity will not have access to SEBI SCORES/ODR,
