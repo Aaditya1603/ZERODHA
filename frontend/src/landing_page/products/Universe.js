@@ -89,17 +89,19 @@ function Universe() {
         </div>
 
         <div className="col-12 mt-5">
-          <button
-            className="p-2 btn btn-primary fs-5 mb-5"
-            style={{
-              width: "20%",
-              margin: "0 auto",
-              backgroundColor: "var(--accent-color)",
-              border: "none",
-            }}
-          >
-            Signup Now
-          </button>
+          <a href="https://zerodha-frontend-kch5.onrender.com/signup">
+            <button
+              className="p-2 btn btn-primary fs-5 mb-5"
+              style={{
+                width: "20%",
+                margin: "0 auto",
+                backgroundColor: "var(--accent-color)",
+                border: "none",
+              }}
+            >
+              Signup Now
+            </button>
+          </a>
         </div>
       </div>
     </div>
